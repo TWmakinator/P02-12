@@ -63,7 +63,7 @@ public class VentanaRegistro extends JFrame {
 			}
 		});
 		btnAceptar.setForeground(Color.RED);
-		btnAceptar.setBackground(Color.BLACK);
+		btnAceptar.setBackground(Color.WHITE);
 		pAbajo.add(btnAceptar);
 		
 		JPanel pArriba = new JPanel();
@@ -80,14 +80,14 @@ public class VentanaRegistro extends JFrame {
 		pCentro.add(panel1);
 		panel1.setLayout(new BorderLayout(0, 0));
 		
-		JButton btnInicioSesin = new JButton("INICIO SESIÃ“N");
-		btnInicioSesin.setForeground(Color.DARK_GRAY);
-		btnInicioSesin.setBackground(Color.BLACK);
+		JButton btnInicioSesin = new JButton("INICIO SESIÓN");
+		btnInicioSesin.setForeground(Color.BLACK);
+		btnInicioSesin.setBackground(Color.WHITE);
 		btnInicioSesin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int resultado = BD.buscarUsuario(txtNick.getText(), txtClave.getText());
 				if(resultado == 2) {
-					JOptionPane.showMessageDialog(null, "Inicio de sesiÃ³n correcto", "INICIO SESIÃ“N", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Inicio de sesión correcto", "INICIO SESIÓN", JOptionPane.INFORMATION_MESSAGE);
 				}else if (resultado == 1){
 					JOptionPane.showMessageDialog(null, "Clave incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);
 				}else {
@@ -124,7 +124,7 @@ public class VentanaRegistro extends JFrame {
 		panel2.setLayout(new BorderLayout(0, 0));
 		
 		JButton btnRegistro = new JButton("REGISTRO");
-		btnRegistro.setBackground(Color.BLACK);
+		btnRegistro.setBackground(Color.WHITE);
 		btnRegistro.setForeground(Color.BLACK);
 		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
