@@ -27,8 +27,10 @@ public class VentanaLogin extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField txtNick;
+	private JTextField txtClave;
+	private String nick,con;
+
 
 	/**
 	 * Launch the application.
@@ -44,6 +46,12 @@ public class VentanaLogin extends JFrame {
 				}
 			}
 		});
+	}
+	
+	public void vaciarCampos() {
+		txtNick.setText("");	
+		txtClave.setText("");
+
 	}
 
 	/**
@@ -61,18 +69,42 @@ public class VentanaLogin extends JFrame {
 		contentPane.add(pAbajo, BorderLayout.SOUTH);
 		
 		JButton btnAceptar = new JButton("Iniciar Sesion");
+		
+		JFrame ventana=this;
+		
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
 				// comprobara los datos nick y pass, 
 				//si son correctos abre la ventana principal  si no muestra un show dialog de error a la hora de inicia sesion.
+			
+				int resultado = BD.buscarUsuario(txtNick.getText(), txtClave.getText());
+				if(resultado == 2) {
+					JOptionPane.showMessageDialog(null, "Inicio de sesión correcto", "INICIO SESIÓN", JOptionPane.INFORMATION_MESSAGE);
+					nick = txtNick.getText();
+					con = txtClave.getText();
+					
+						ventana.setVisible(false);
+						if(nick.equals("admin") && con.equals("admin")) {
+							VentanaPrincipalAdmin vpa =  new VentanaPrincipalAdmin();
+							vpa.setVisible(true);
+						}else {
+							VentanaPrincipal vpc= new VentanaPrincipal();
+							vpc.setVisible(true);
+						}
+						
+				}else if (resultado == 1){
+					JOptionPane.showMessageDialog(null, "Clave incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}else {
+					JOptionPane.showMessageDialog(null, "Usuario desconocido", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
+				vaciarCampos();
 			}
 		});
 		btnAceptar.setForeground(Color.BLACK);
 		btnAceptar.setBackground(Color.WHITE);
 		pAbajo.add(btnAceptar);
 		
-		JFrame ventana = this;
+		
 		JButton btnR = new JButton("Registrarse");
 		btnR.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -99,15 +131,15 @@ public class VentanaLogin extends JFrame {
 		lblNick.setHorizontalAlignment(SwingConstants.LEFT);
 		pCentro.add(lblNick, "cell 1 1,alignx center");
 		
-		textField = new JTextField();
-		pCentro.add(textField, "cell 2 1,growx");
-		textField.setColumns(10);
+		txtNick = new JTextField();
+		pCentro.add(txtNick, "cell 2 1,growx");
+		txtNick.setColumns(10);
 		
 		JLabel lblContrasea = new JLabel("CONTRASEÑA :");
 		pCentro.add(lblContrasea, "cell 1 2,alignx center");
 		
-		textField_1 = new JTextField();
-		pCentro.add(textField_1, "cell 2 2,growx");
-		textField_1.setColumns(10);
+		txtClave = new JTextField();
+		pCentro.add(txtClave, "cell 2 2,growx");
+		txtClave.setColumns(10);
 	}
 }
