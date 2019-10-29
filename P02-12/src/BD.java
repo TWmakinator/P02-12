@@ -115,7 +115,7 @@ public class BD {
 	
 	public static int buscarUsuario(String nick, String clave) {
 		int resultado = 0;
-		String query = "SELECT * FROM usuario WHERE nick='"+nick+"'";
+		String query = "SELECT * FROM usuario WHERE Nick='"+nick+"'";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
 		try {
@@ -138,7 +138,7 @@ public class BD {
 		return resultado;
 	}
 	
-	public static void registrarUsuario(String nick, String contraseña, String email, String numeroCuenta, String Admin) {
+	public static void registrarUsuario(String nick, String contraseña, String email, int numeroCuenta, int Admin) {
 		String sql = "INSERT INTO usuario VALUES('"+nick+"','"+contraseña+"','"+email+"','"+numeroCuenta+"','"+Admin+")";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);

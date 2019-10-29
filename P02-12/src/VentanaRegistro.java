@@ -76,7 +76,7 @@ public class VentanaRegistro extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				//Añade el user a la bd
 				
-				if(txtNombre.getText().equals("")|| txtEmail.getText().equals("") || txtContraseña.getText().equals("")|| txtNumeroCuenta.getText().equals("")||txtAdmin.getText().equals("") ) {
+				if(txtNombre.getText().equals("")|| txtEmail.getText().equals("") || txtContraseña.getText().equals("")|| txtNumeroCuenta.getText().equals("")|| txtAdmin.getText().equals("") ) {
 					JOptionPane.showMessageDialog(null, "Hay que rellenar todos los campos", "ERROR", JOptionPane.ERROR_MESSAGE);
 				}else {
 					try {
@@ -84,8 +84,10 @@ public class VentanaRegistro extends JFrame {
 						if(resultado != 0) {
 							JOptionPane.showMessageDialog(null, "Este usuario ya existe", "ERROR", JOptionPane.ERROR_MESSAGE);
 						}else {
-						
-							BD.registrarUsuario(txtNombre.getText(),txtEmail.getText(), txtContraseña.getText(), txtNumeroCuenta.getText(),txtAdmin.getText());
+							
+						int cuenta= Integer.parseInt(txtNumeroCuenta.getText());
+						int admin=Integer.parseInt(txtAdmin.getText());
+							BD.registrarUsuario(txtNombre.getText(),txtEmail.getText(), txtContraseña.getText(), cuenta, admin);
 							JOptionPane.showMessageDialog(null, "Registro realizado con éxito", "REGISTRO", JOptionPane.INFORMATION_MESSAGE);							
 						}
 					}catch(NumberFormatException e1) {
