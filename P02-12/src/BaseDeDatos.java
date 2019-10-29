@@ -73,7 +73,6 @@ public class BaseDeDatos {
 	public BaseDeDatos(){
 		conectar();
 	}
-	
-	/*A partir de aquí hacemos las consultas específicas de cada proyecto*/
+
 	
 }
