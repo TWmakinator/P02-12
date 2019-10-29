@@ -22,7 +22,6 @@ public class VentanaRegistro extends JFrame {
 	private JTextField txtEmail;
 	private JTextField txtNumeroCuenta;
 	private JTextField txtNombre;
-	private JTextField txtAdmin;
 
 	/**
 	 * Launch the application.
@@ -76,7 +75,7 @@ public class VentanaRegistro extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				//Añade el user a la bd
 				
-				if(txtNombre.getText().equals("")|| txtEmail.getText().equals("") || txtContraseña.getText().equals("")|| txtNumeroCuenta.getText().equals("")|| txtAdmin.getText().equals("") ) {
+				if(txtNombre.getText().equals("")|| txtEmail.getText().equals("") || txtContraseña.getText().equals("")|| txtNumeroCuenta.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Hay que rellenar todos los campos", "ERROR", JOptionPane.ERROR_MESSAGE);
 				}else {
 					try {
@@ -86,8 +85,7 @@ public class VentanaRegistro extends JFrame {
 						}else {
 							
 						int cuenta= Integer.parseInt(txtNumeroCuenta.getText());
-						int admin=Integer.parseInt(txtAdmin.getText());
-							BD.registrarUsuario(txtNombre.getText(),txtEmail.getText(), txtContraseña.getText(), cuenta, admin);
+							BD.registrarUsuario(txtNombre.getText(),txtEmail.getText(), txtContraseña.getText(), cuenta);
 							JOptionPane.showMessageDialog(null, "Registro realizado con éxito", "REGISTRO", JOptionPane.INFORMATION_MESSAGE);							
 						}
 					}catch(NumberFormatException e1) {
@@ -174,24 +172,6 @@ public class VentanaRegistro extends JFrame {
 		gbc_txtNumeroCuenta.gridy = 5;
 		panel_2.add(txtNumeroCuenta, gbc_txtNumeroCuenta);
 		txtNumeroCuenta.setColumns(10);
-		
-		JLabel lblAdmin = new JLabel("Admin:");
-		lblAdmin.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_lblAdmin = new GridBagConstraints();
-		gbc_lblAdmin.anchor = GridBagConstraints.WEST;
-		gbc_lblAdmin.insets = new Insets(0, 0, 5, 5);
-		gbc_lblAdmin.gridx = 2;
-		gbc_lblAdmin.gridy = 6;
-		panel_2.add(lblAdmin, gbc_lblAdmin);
-		
-		txtAdmin = new JTextField();
-		GridBagConstraints gbc_txtAdmin = new GridBagConstraints();
-		gbc_txtAdmin.insets = new Insets(0, 0, 5, 5);
-		gbc_txtAdmin.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtAdmin.gridx = 4;
-		gbc_txtAdmin.gridy = 6;
-		panel_2.add(txtAdmin, gbc_txtAdmin);
-		txtAdmin.setColumns(10);
 	}
 
 }
