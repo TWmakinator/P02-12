@@ -13,6 +13,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class VentanaRegistro extends JFrame {
 
@@ -21,6 +22,7 @@ public class VentanaRegistro extends JFrame {
 	private JTextField txtEmail;
 	private JTextField txtNumeroCuenta;
 	private JTextField txtNombre;
+	private JTextField txtAdmin;
 
 	/**
 	 * Launch the application.
@@ -74,7 +76,7 @@ public class VentanaRegistro extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				//Añade el user a la bd
 				
-				if(txtNombre.getText().equals("")|| txtEmail.getText().equals("") || txtContraseña.getText().equals("")|| txtNumeroCuenta.getText().equals("") ) {
+				if(txtNombre.getText().equals("")|| txtEmail.getText().equals("") || txtContraseña.getText().equals("")|| txtNumeroCuenta.getText().equals("")||txtAdmin.getText().equals("") ) {
 					JOptionPane.showMessageDialog(null, "Hay que rellenar todos los campos", "ERROR", JOptionPane.ERROR_MESSAGE);
 				}else {
 					try {
@@ -83,7 +85,7 @@ public class VentanaRegistro extends JFrame {
 							JOptionPane.showMessageDialog(null, "Este usuario ya existe", "ERROR", JOptionPane.ERROR_MESSAGE);
 						}else {
 						
-							BD.registrarUsuario(txtNombre.getText(),txtEmail.getText(), txtContraseña.getText(), txtNumeroCuenta.getText());
+							BD.registrarUsuario(txtNombre.getText(),txtEmail.getText(), txtContraseña.getText(), txtNumeroCuenta.getText(),txtAdmin.getText());
 							JOptionPane.showMessageDialog(null, "Registro realizado con éxito", "REGISTRO", JOptionPane.INFORMATION_MESSAGE);							
 						}
 					}catch(NumberFormatException e1) {
@@ -97,9 +99,9 @@ public class VentanaRegistro extends JFrame {
 		JPanel panel_2 = new JPanel();
 		contentPane.add(panel_2, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
-		gbl_panel_2.columnWidths = new int[]{0, 0, 0, 0, 0, 0};
+		gbl_panel_2.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0};
 		gbl_panel_2.rowHeights = new int[] {40, 25, 30, 30, 30, 30, 30, 0, 31, 25};
-		gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
 		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
@@ -107,7 +109,7 @@ public class VentanaRegistro extends JFrame {
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.anchor = GridBagConstraints.WEST;
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel.gridx = 1;
+		gbc_lblNewLabel.gridx = 2;
 		gbc_lblNewLabel.gridy = 2;
 		panel_2.add(lblNombre, gbc_lblNewLabel);
 		
@@ -115,7 +117,7 @@ public class VentanaRegistro extends JFrame {
 		GridBagConstraints gbc_txtNombre = new GridBagConstraints();
 		gbc_txtNombre.insets = new Insets(0, 0, 5, 5);
 		gbc_txtNombre.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtNombre.gridx = 3;
+		gbc_txtNombre.gridx = 4;
 		gbc_txtNombre.gridy = 2;
 		panel_2.add(txtNombre, gbc_txtNombre);
 		txtNombre.setColumns(10);
@@ -124,7 +126,7 @@ public class VentanaRegistro extends JFrame {
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.anchor = GridBagConstraints.WEST;
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_1.gridx = 1;
+		gbc_lblNewLabel_1.gridx = 2;
 		gbc_lblNewLabel_1.gridy = 3;
 		panel_2.add(lblEmail, gbc_lblNewLabel_1);
 		
@@ -132,7 +134,7 @@ public class VentanaRegistro extends JFrame {
 		GridBagConstraints gbc_txtEmail = new GridBagConstraints();
 		gbc_txtEmail.insets = new Insets(0, 0, 5, 5);
 		gbc_txtEmail.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtEmail.gridx = 3;
+		gbc_txtEmail.gridx = 4;
 		gbc_txtEmail.gridy = 3;
 		panel_2.add(txtEmail, gbc_txtEmail);
 		txtEmail.setColumns(10);
@@ -141,7 +143,7 @@ public class VentanaRegistro extends JFrame {
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.anchor = GridBagConstraints.WEST;
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_2.gridx = 1;
+		gbc_lblNewLabel_2.gridx = 2;
 		gbc_lblNewLabel_2.gridy = 4;
 		panel_2.add(lblContraseña, gbc_lblNewLabel_2);
 		
@@ -149,7 +151,7 @@ public class VentanaRegistro extends JFrame {
 		GridBagConstraints gbc_txtContraseña = new GridBagConstraints();
 		gbc_txtContraseña.insets = new Insets(0, 0, 5, 5);
 		gbc_txtContraseña.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtContraseña.gridx = 3;
+		gbc_txtContraseña.gridx = 4;
 		gbc_txtContraseña.gridy = 4;
 		panel_2.add(txtContraseña, gbc_txtContraseña);
 		txtContraseña.setColumns(10);
@@ -158,7 +160,7 @@ public class VentanaRegistro extends JFrame {
 		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
 		gbc_lblNewLabel_3.anchor = GridBagConstraints.WEST;
 		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_3.gridx = 1;
+		gbc_lblNewLabel_3.gridx = 2;
 		gbc_lblNewLabel_3.gridy = 5;
 		panel_2.add(lblNumCuenta, gbc_lblNewLabel_3);
 		
@@ -166,10 +168,28 @@ public class VentanaRegistro extends JFrame {
 		GridBagConstraints gbc_txtNumeroCuenta = new GridBagConstraints();
 		gbc_txtNumeroCuenta.insets = new Insets(0, 0, 5, 5);
 		gbc_txtNumeroCuenta.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtNumeroCuenta.gridx = 3;
+		gbc_txtNumeroCuenta.gridx = 4;
 		gbc_txtNumeroCuenta.gridy = 5;
 		panel_2.add(txtNumeroCuenta, gbc_txtNumeroCuenta);
 		txtNumeroCuenta.setColumns(10);
+		
+		JLabel lblAdmin = new JLabel("Admin:");
+		lblAdmin.setHorizontalAlignment(SwingConstants.LEFT);
+		GridBagConstraints gbc_lblAdmin = new GridBagConstraints();
+		gbc_lblAdmin.anchor = GridBagConstraints.WEST;
+		gbc_lblAdmin.insets = new Insets(0, 0, 5, 5);
+		gbc_lblAdmin.gridx = 2;
+		gbc_lblAdmin.gridy = 6;
+		panel_2.add(lblAdmin, gbc_lblAdmin);
+		
+		txtAdmin = new JTextField();
+		GridBagConstraints gbc_txtAdmin = new GridBagConstraints();
+		gbc_txtAdmin.insets = new Insets(0, 0, 5, 5);
+		gbc_txtAdmin.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtAdmin.gridx = 4;
+		gbc_txtAdmin.gridy = 6;
+		panel_2.add(txtAdmin, gbc_txtAdmin);
+		txtAdmin.setColumns(10);
 	}
 
 }

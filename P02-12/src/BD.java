@@ -138,8 +138,8 @@ public class BD {
 		return resultado;
 	}
 	
-	public static void registrarUsuario(String nick, String contraseña, String email, String numeroCuenta) {
-		String sql = "INSERT INTO usuario VALUES('"+nick+"','"+contraseña+"','"+email+"','"+numeroCuenta+"')";
+	public static void registrarUsuario(String nick, String contraseña, String email, String numeroCuenta, String Admin) {
+		String sql = "INSERT INTO usuario VALUES('"+nick+"','"+contraseña+"','"+email+"','"+numeroCuenta+"','"+Admin+")";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
 		try {
