@@ -1,4 +1,5 @@
 
+import java.io.Closeable;
 import java.sql.*;
 
 /** Clase de gestión de base de datos del examen
@@ -134,8 +135,9 @@ public class BD {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		cerrarBD(con, st);
 		return resultado;
+
 	}
 	
 	public static void registrarUsuario(String nick, String contraseña, String email, int numeroCuenta ) {
@@ -148,7 +150,7 @@ public class BD {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		cerrarBD(con, st);
 	}
 	
 }

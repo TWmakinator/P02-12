@@ -86,7 +86,10 @@ public class VentanaRegistro extends JFrame {
 							
 						int cuenta= Integer.parseInt(txtNumeroCuenta.getText());
 							BD.registrarUsuario(txtNombre.getText(),txtEmail.getText(), txtContraseña.getText(), cuenta);
-							JOptionPane.showMessageDialog(null, "Registro realizado con éxito", "REGISTRO", JOptionPane.INFORMATION_MESSAGE);							
+							JOptionPane.showMessageDialog(null, "Registro realizado con éxito", "REGISTRO", JOptionPane.INFORMATION_MESSAGE);
+							ventana.setVisible(false);
+							VentanaLogin vl = new VentanaLogin();
+							vl.setVisible(true);
 						}
 					}catch(NumberFormatException e1) {
 						
