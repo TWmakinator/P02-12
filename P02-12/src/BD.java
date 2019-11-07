@@ -1,6 +1,7 @@
 
 import java.io.Closeable;
 import java.sql.*;
+import java.util.ArrayList;
 
 /** Clase de gestión de base de datos del examen
  * Funciona con un hilo propio para no interrumpir el tiempo de ejecución
@@ -151,6 +152,103 @@ public class BD {
 			e.printStackTrace();
 		}
 		cerrarBD(con, st);
+	}
+	
+	
+	public static ArrayList<String> obtenerTodasRutasFotos(){
+		ArrayList<String> rutas = new ArrayList<String>();
+		String sql = "SELECT Ruta FROM cartas";
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		try {
+			ResultSet rs = st.executeQuery(sql);
+			while(rs.next()) {
+				String r = rs.getString("Ruta");
+				System.out.println(r);
+				rutas.add(r);
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cerrarBD(con, st);
+		return rutas;
+		
+	}
+	
+	public static float obtenerPrecioCarta(String ruta) {
+		String sql = "SELECT Precio FROM cartas WHERE Ruta='"+ruta+"'";
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		float precio = 0;
+		try {
+			ResultSet rs = st.executeQuery(sql);
+			if(rs.next()) {
+				precio = rs.getFloat("Precio");
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cerrarBD(con, st);
+		return precio;
+	}
+	
+	public static String obtenerRutaFoto(int referencia) {
+		String sql = "SELECT Ruta FROM cartas WHERE Referencia="+referencia;
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		String ruta="";
+		try {
+			ResultSet rs = st.executeQuery(sql);
+			if(rs.next())
+				ruta = rs.getString("Ruta");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cerrarBD(con, st);
+		return ruta;
+	}
+	
+	public static String obtenerNombreCarta(String ruta) {
+		String sql = "SELECT Nombre FROM cartas WHERE Ruta='"+ruta+"'";
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		String nombre="";
+		try {
+			ResultSet rs = st.executeQuery(sql);
+			if(rs.next()) {
+				nombre = rs.getString("Nombre");
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cerrarBD(con, st);
+		return nombre;
+	}
+	
+	public static String obtenerRarezaCarta(String ruta) {
+		String sql = "SELECT Rareza FROM cartas WHERE Ruta='"+ruta+"'";
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		String rareza="";
+		try {
+			ResultSet rs = st.executeQuery(sql);
+			if(rs.next()) {
+				rareza = rs.getString("Rareza");
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cerrarBD(con, st);
+		return rareza;
 	}
 	
 }
