@@ -84,8 +84,7 @@ public class VentanaRegistro extends JFrame {
 							JOptionPane.showMessageDialog(null, "Este usuario ya existe", "ERROR", JOptionPane.ERROR_MESSAGE);
 						}else {
 							
-						int cuenta= Integer.parseInt(txtNumeroCuenta.getText());
-							BD.registrarUsuario(txtNombre.getText(),txtEmail.getText(), txtContraseña.getText(), cuenta);
+							BD.registrarUsuario(txtNombre.getText(),txtEmail.getText(), txtContraseña.getText(), txtNumeroCuenta.getText());
 							JOptionPane.showMessageDialog(null, "Registro realizado con éxito", "REGISTRO", JOptionPane.INFORMATION_MESSAGE);
 							ventana.setVisible(false);
 							VentanaLogin vl = new VentanaLogin();
