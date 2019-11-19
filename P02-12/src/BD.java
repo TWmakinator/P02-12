@@ -123,7 +123,7 @@ public class BD {
 		try {
 			ResultSet rs = st.executeQuery(query);
 			if(rs.next()) {
-				String cl = rs.getString(1);
+				String cl = rs.getString(3);
 				if(cl.equals(clave)){
 					resultado = 2;
 				}else {
@@ -137,12 +137,13 @@ public class BD {
 			e.printStackTrace();
 		}
 		cerrarBD(con, st);
+		System.err.println(resultado);
 		return resultado;
 
 	}
 	
-	public static void registrarUsuario(String nick, String contraseña, String email, String numeroCuenta ) {
-		String sql = "INSERT INTO usuario VALUES('"+nick+"','"+contraseña+"','"+email+"','"+numeroCuenta+"')";
+	public static void registrarUsuario(String nick, String email, String contraseña, String numeroCuenta ) {
+		String sql = "INSERT INTO usuario VALUES('"+nick+"','"+email+"','"+contraseña+"','"+numeroCuenta+"')";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
 		try {

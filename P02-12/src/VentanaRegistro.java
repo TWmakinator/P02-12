@@ -82,8 +82,7 @@ public class VentanaRegistro extends JFrame {
 						int resultado = BD.buscarUsuario(txtNombre.getText(), txtContraseña.getText());
 						if(resultado != 0) {
 							JOptionPane.showMessageDialog(null, "Este usuario ya existe", "ERROR", JOptionPane.ERROR_MESSAGE);
-						}else {
-							
+						}else {	
 							BD.registrarUsuario(txtNombre.getText(),txtEmail.getText(), txtContraseña.getText(), txtNumeroCuenta.getText());
 							JOptionPane.showMessageDialog(null, "Registro realizado con éxito", "REGISTRO", JOptionPane.INFORMATION_MESSAGE);
 							ventana.setVisible(false);

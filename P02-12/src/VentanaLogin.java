@@ -65,9 +65,35 @@ public class VentanaLogin extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
+		
+		JPanel pArriba = new JPanel();
+		contentPane.add(pArriba, BorderLayout.NORTH);
+		
+		JLabel lblDeustogames = new JLabel("DeustoGames");
+		lblDeustogames.setFont(new Font("Plantagenet Cherokee", Font.BOLD | Font.ITALIC, 20));
+		pArriba.add(lblDeustogames);
+		
+		JPanel pCentro = new JPanel();
+		contentPane.add(pCentro, BorderLayout.CENTER);
+		pCentro.setLayout(new MigLayout("", "[50][110][170,grow][50]", "[30][30][30][30]"));
+		
 		JPanel pAbajo = new JPanel();
 		contentPane.add(pAbajo, BorderLayout.SOUTH);
+		JLabel lblNick = new JLabel("NICK :");
+		lblNick.setHorizontalAlignment(SwingConstants.LEFT);
+		pCentro.add(lblNick, "cell 1 1,alignx center");
 		
+		txtNick = new JTextField();
+		pCentro.add(txtNick, "cell 2 1,growx");
+		txtNick.setColumns(10);
+		
+		JLabel lblContrasea = new JLabel("CONTRASEÑA :");
+		pCentro.add(lblContrasea, "cell 1 2,alignx center");
+		
+		txtClave = new JTextField();
+		pCentro.add(txtClave, "cell 2 2,growx");
+		txtClave.setColumns(10);
+	
 		JButton btnAceptar = new JButton("Iniciar Sesion");
 		
 		JFrame ventana=this;
@@ -115,31 +141,8 @@ public class VentanaLogin extends JFrame {
 			}
 		});
 		pAbajo.add(btnR);
+
 		
-		JPanel pArriba = new JPanel();
-		contentPane.add(pArriba, BorderLayout.NORTH);
-		
-		JLabel lblDeustogames = new JLabel("DeustoGames");
-		lblDeustogames.setFont(new Font("Plantagenet Cherokee", Font.BOLD | Font.ITALIC, 20));
-		pArriba.add(lblDeustogames);
-		
-		JPanel pCentro = new JPanel();
-		contentPane.add(pCentro, BorderLayout.CENTER);
-		pCentro.setLayout(new MigLayout("", "[50][110][170,grow][50]", "[30][30][30][30]"));
-		
-		JLabel lblNick = new JLabel("NICK :");
-		lblNick.setHorizontalAlignment(SwingConstants.LEFT);
-		pCentro.add(lblNick, "cell 1 1,alignx center");
-		
-		txtNick = new JTextField();
-		pCentro.add(txtNick, "cell 2 1,growx");
-		txtNick.setColumns(10);
-		
-		JLabel lblContrasea = new JLabel("CONTRASEÑA :");
-		pCentro.add(lblContrasea, "cell 1 2,alignx center");
-		
-		txtClave = new JTextField();
-		pCentro.add(txtClave, "cell 2 2,growx");
-		txtClave.setColumns(10);
+
 	}
 }
