@@ -79,6 +79,14 @@ public class VentanaPrincipalAdmin extends JFrame {
 		panel_2.setLayout(gbl_panel_2);
 		
 		JButton btnNewButton_1 = new JButton("Añadir Carta BD");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AñadirCarta vn = new AñadirCarta();
+				vn.setVisible(true);
+				ventana.setVisible(false);
+				
+			}
+		});
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
 		gbc_btnNewButton_1.anchor = GridBagConstraints.NORTH;
 		gbc_btnNewButton_1.fill = GridBagConstraints.HORIZONTAL;

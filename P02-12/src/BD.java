@@ -2,11 +2,11 @@
 import java.io.Closeable;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.concurrent.ConcurrentNavigableMap;
 
-/** Clase de gestión de base de datos del examen
- * Funciona con un hilo propio para no interrumpir el tiempo de ejecución
- * @author andoni.eguiluz @ ingenieria.deusto.es
- */
+import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Parsed;
+
+
 public class BD {
 	
 
@@ -129,9 +129,9 @@ public class BD {
 				}else {
 					resultado = 1;
 				}
-			}/*else {
+			}else {
 				resultado = 0;
-			}*/
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -154,11 +154,68 @@ public class BD {
 		}
 		cerrarBD(con, st);
 	}
+	public static void registrarCarta(String nombre, String edicion, String rareza , String precio, String ruta, String referencia, String stock) {
+		String sql = "INSERT INTO Cartas VALUES('"+nombre+"','"+edicion+"','"+rareza+"','"+precio+"','"+ruta+"','"+referencia+"','"+stock+"')";
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		System.err.println("Cart a metido?=");
+	
+		try {
+			st.executeUpdate(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cerrarBD(con, st);
+	}
+	public static void añadirStock(String nombre, String edicion, String stock) {
+		String sql = "UPDATE Cartas SET (Stock = ?) WHERE (Nombre = ?, Edicion = ?)";
+		Connection con = BD.initBD("BaseDeDatos.db");
+		
+
+		try {
+			PreparedStatement stmt = con.prepareStatement(sql);
+			// las interrogaciones (la primera mete el stmt 1), etc			
+			stmt.setString(1, stock);
+			stmt.setString(2, nombre);
+			stmt.setString(3, edicion);
+			
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static int buscarCarta(String nombre) {
+		int resultado = 0;
+		String query = "SELECT * FROM Cartas WHERE Nombre='"+nombre+"'";
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		try {
+			ResultSet rs = st.executeQuery(query);
+			if(rs.next()) {
+				String non = rs.getString(1);
+				if(non.equals(nombre)){
+					resultado = 2;
+				}else {
+					resultado = 1;
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cerrarBD(con, st);
+		System.err.println(resultado);
+		return resultado;
+
+	}
 	
 	
 	public static ArrayList<String> obtenerTodasRutasFotos(){
 		ArrayList<String> rutas = new ArrayList<String>();
-		String sql = "SELECT Ruta FROM cartas";
+		String sql = "SELECT Ruta FROM Cartas";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
 		try {
@@ -179,7 +236,7 @@ public class BD {
 	}
 	
 	public static float obtenerPrecioCarta(String ruta) {
-		String sql = "SELECT Precio FROM cartas WHERE Ruta='"+ruta+"'";
+		String sql = "SELECT Precio FROM Cartas WHERE Ruta='"+ruta+"'";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
 		float precio = 0;
@@ -198,7 +255,7 @@ public class BD {
 	}
 	
 	public static String obtenerRutaFoto(int referencia) {
-		String sql = "SELECT Ruta FROM cartas WHERE Referencia="+referencia;
+		String sql = "SELECT Ruta FROM Cartas WHERE Referencia="+referencia;
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
 		String ruta="";
@@ -215,7 +272,7 @@ public class BD {
 	}
 	
 	public static String obtenerNombreCarta(String ruta) {
-		String sql = "SELECT Nombre FROM cartas WHERE Ruta='"+ruta+"'";
+		String sql = "SELECT Nombre FROM Cartas WHERE Ruta='"+ruta+"'";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
 		String nombre="";
@@ -234,7 +291,7 @@ public class BD {
 	}
 	
 	public static String obtenerRarezaCarta(String ruta) {
-		String sql = "SELECT Rareza FROM cartas WHERE Ruta='"+ruta+"'";
+		String sql = "SELECT Rareza FROM Cartas WHERE Ruta='"+ruta+"'";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
 		String rareza="";
