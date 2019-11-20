@@ -1,9 +1,13 @@
+package Swing;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Logica.BD;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -14,7 +18,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
 
-public class AñadirCarta extends JFrame {
+public class VentanaAñadirCarta extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtEdicion;
@@ -32,7 +36,7 @@ public class AñadirCarta extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AñadirCarta frame = new AñadirCarta();
+					VentanaAñadirCarta frame = new VentanaAñadirCarta();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +48,7 @@ public class AñadirCarta extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AñadirCarta() {
+	public VentanaAñadirCarta() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

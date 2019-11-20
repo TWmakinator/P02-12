@@ -1,3 +1,4 @@
+package Logica;
 import java.sql.Connection;
 import java.sql.Statement;
 

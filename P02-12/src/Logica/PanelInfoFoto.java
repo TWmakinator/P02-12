@@ -1,3 +1,4 @@
+package Logica;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;

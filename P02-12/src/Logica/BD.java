@@ -1,3 +1,4 @@
+package Logica;
 
 import java.io.Closeable;
 import java.sql.*;

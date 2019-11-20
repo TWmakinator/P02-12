@@ -1,3 +1,4 @@
+package Swing;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -81,7 +82,7 @@ public class VentanaPrincipalAdmin extends JFrame {
 		JButton btnNewButton_1 = new JButton("Añadir Carta BD");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AñadirCarta vn = new AñadirCarta();
+				VentanaAñadirCarta vn = new VentanaAñadirCarta();
 				vn.setVisible(true);
 				ventana.setVisible(false);
 				
