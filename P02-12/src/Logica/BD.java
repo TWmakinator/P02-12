@@ -234,6 +234,30 @@ public class BD {
 		cerrarBD(con, st);
 		return rutas;
 		
+	} 
+	
+	public static ArrayList<String> obtenerRutasFotos2(String nombre, String edicion, String rareza,String precio){
+		ArrayList<String> rutas = new ArrayList<String>();
+		String sql = "" ; 
+		if(nombre.equals("") && edicion.equals("") && rareza.equals("") && precio.equals("")) 
+			sql = "SELECT ruta FROM producto WHERE Nombre='"+nombre+"' AND Edicion='"+edicion+"' AND Rareza='"+rareza+"'"+"' AND Precio='"+precio;
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		
+		try {
+			ResultSet rs = st.executeQuery(sql);
+			while(rs.next()) {
+				String r = rs.getString("ruta");
+				rutas.add(r);
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cerrarBD(con, st);
+		return rutas;
+		
 	}
 	
 	public static float obtenerPrecioCarta(String ruta) {

@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Logica.PanelFotos;
+
 import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import java.awt.FlowLayout;
@@ -16,7 +19,7 @@ import javax.swing.BoxLayout;
 public class VentanaPrincipal extends JFrame {
 
 	private JPanel contentPane;
-
+	private String nombre,edicion,rareza ,precio;
 	/**
 	 * Launch the application.
 	 */
@@ -49,6 +52,12 @@ public class VentanaPrincipal extends JFrame {
 		
 		JLabel lblVentanaCliente = new JLabel("VentanaCliente");
 		panelNorte.add(lblVentanaCliente);
+		
+		JPanel panelCentro = new PanelFotos(nombre,edicion,rareza,precio);
+		contentPane.add(panelCentro, BorderLayout.CENTER);
+		
+		JPanel panelSur = new JPanel();
+		contentPane.add(panelSur, BorderLayout.SOUTH);
 	}
 
 }
