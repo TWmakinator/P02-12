@@ -114,7 +114,7 @@ public class VentanaLogin extends JFrame {
 					con = txtClave.getText();
 					
 						ventana.setVisible(false);
-						if(nick.equals("admin") && con.equals("admin")) {
+						if(nick.equals("admin") && con.equals("admin1")) {
 							VentanaPrincipalAdmin vpa =  new VentanaPrincipalAdmin();
 							vpa.setVisible(true);
 						}else {

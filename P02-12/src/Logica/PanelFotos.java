@@ -26,12 +26,12 @@ public class PanelFotos extends JPanel{
 		}
 		for(int i=0;i<rutas.size();i++) {
 			
-			/*ImageIcon im = new ImageIcon(rutas.get(i));
+			ImageIcon im = new ImageIcon(rutas.get(i));
 			im.setDescription(rutas.get(i));
 			JLabel lblFoto = new JLabel(im);
 			JPanel pFoto = new JPanel();
 			pFoto.add(lblFoto);
-			add(pFoto);*/
+			add(pFoto);
 		}
 		}
 	
@@ -40,7 +40,7 @@ public class PanelFotos extends JPanel{
 	 */
 	public PanelFotos(String nombre, String rareza, String edicion,String precio) {
 		setLayout(new GridLayout(0, 5, 0, 0));
-		cargarFotos(nombre, rareza,edicion, precio);
+		cargarFotos(nombre, rareza, edicion, precio);
 		setVisible(true);
 	}
 	

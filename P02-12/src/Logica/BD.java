@@ -124,7 +124,7 @@ public class BD {
 		try {
 			ResultSet rs = st.executeQuery(query);
 			if(rs.next()) {
-				String cl = rs.getString(3);
+				String cl = rs.getString(2);
 				if(cl.equals(clave)){
 					resultado = 2;
 				}else {
