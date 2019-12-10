@@ -52,8 +52,8 @@ public class VentanaPrincipal extends JFrame {
 		JLabel lblVentanaCliente = new JLabel("VentanaCliente");
 		panelNorte.add(lblVentanaCliente);
 		
-		//JPanel panelCentro = new PanelFotos(); En este panel se tienen qu ecargar la fotos de las cartas metodo cargar cartas 
-		//contentPane.add(panelCentro, BorderLayout.CENTER);
+		JPanel panelCentro = new PanelFotos();
+		contentPane.add(panelCentro, BorderLayout.CENTER);
 		
 		JPanel panelSur = new JPanel();
 		contentPane.add(panelSur, BorderLayout.SOUTH);

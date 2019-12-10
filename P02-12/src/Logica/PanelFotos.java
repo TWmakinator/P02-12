@@ -15,15 +15,9 @@ public class PanelFotos extends JPanel{
 	
 	
 	
-	private void cargarFotos(String nombre, String rareza, String edicion,String precio) {
+	private void cargarFotos() {
 		ArrayList<String> rutas;
-			System.out.println(nombre+" "+rareza+"  "+edicion+"  "+precio);
-		if(nombre.equals("") && rareza.equals("") && edicion.equals("") && precio.equals("")) {
 			rutas = BD.obtenerTodasRutasFotos();
-			System.out.println("Tamaño del array "+rutas.size());
-		}else {
-		rutas=BD.obtenerRutasFotos2(nombre, edicion, rareza, precio);
-		}
 		for(int i=0;i<rutas.size();i++) {
 			
 			ImageIcon im = new ImageIcon(rutas.get(i));
@@ -38,9 +32,9 @@ public class PanelFotos extends JPanel{
 	/**
 	 * Create the panel.
 	 */
-	public PanelFotos(String nombre, String rareza, String edicion,String precio) {
+	public PanelFotos(){
 		setLayout(new GridLayout(0, 5, 0, 0));
-		cargarFotos(nombre, rareza, edicion, precio);
+		cargarFotos();
 		setVisible(true);
 	}
 	
