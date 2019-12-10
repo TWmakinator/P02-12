@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.BoxLayout;
+import javax.swing.JScrollBar;
 
 public class VentanaPrincipal extends JFrame {
 
@@ -40,7 +41,7 @@ public class VentanaPrincipal extends JFrame {
 	 */
 	public VentanaPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 1200, 900); //100,100,1200,900
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -54,9 +55,6 @@ public class VentanaPrincipal extends JFrame {
 		
 		JPanel panelCentro = new PanelFotos();
 		contentPane.add(panelCentro, BorderLayout.CENTER);
-		
-		JPanel panelSur = new JPanel();
-		contentPane.add(panelSur, BorderLayout.SOUTH);
 	}
 
 }

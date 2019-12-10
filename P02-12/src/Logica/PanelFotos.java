@@ -4,6 +4,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.awt.Point;
+import java.awt.Scrollbar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -16,7 +17,7 @@ public class PanelFotos extends JPanel{
 	
 	
 	private void cargarFotos() {
-		ArrayList<String> rutas;
+			ArrayList<String> rutas;	
 			rutas = BD.obtenerTodasRutasFotos();
 		for(int i=0;i<rutas.size();i++) {
 			
@@ -27,13 +28,12 @@ public class PanelFotos extends JPanel{
 			pFoto.add(lblFoto);
 			add(pFoto);
 		}
-		}
-	
+		}	
 	/**
-	 * Create the panel.
+	 * Crea el panel.
 	 */
 	public PanelFotos(){
-		setLayout(new GridLayout(0, 5, 0, 0));
+		setLayout(new GridLayout(0, 6, 5, 0));
 		cargarFotos();
 		setVisible(true);
 	}

@@ -55,7 +55,7 @@ public class BD {
 			statement.setQueryTimeout(30);  // poner timeout 30 msg
 			try {
 				statement.executeUpdate("create table usuario " +
-					"(nick string, clave string, email string, NumeroCuenta int)");
+					"(nick string, contraseña string, email string, NumeroCuenta int)");
 			} catch (SQLException e) {} // Tabla ya existe. Nada que hacer
 			return statement;
 		} catch (SQLException e) {
@@ -109,14 +109,14 @@ public class BD {
 	/**
 	 * Devuelve información sobre la existencia del usuario en la bbdd
 	 * @param nick
-	 * @param clave
+	 * @param contraseña
 	 * @return  0: Si el nick es incorrecto
-	 *           1: Si el nick es correcto pero la clave no
-	 *           2: Si el nick y la clave son correctos
+	 *           1: Si el nick es correcto pero la contraseña no
+	 *           2: Si el nick y la contraseña son correctos
 	 
 	 */
 	
-	public static int buscarUsuario(String nick, String clave) {
+	public static int buscarUsuario(String nick, String contraseña) {
 		int resultado = 0;
 		String query = "SELECT * FROM usuario WHERE Nick='"+nick+"'";
 		Connection con = BD.initBD("BaseDeDatos.db");
@@ -125,7 +125,7 @@ public class BD {
 			ResultSet rs = st.executeQuery(query);
 			if(rs.next()) {
 				String cl = rs.getString(2);
-				if(cl.equals(clave)){
+				if(cl.equals(contraseña)){
 					resultado = 2;
 				}else {
 					resultado = 1;
@@ -144,9 +144,9 @@ public class BD {
 	}
 	
 	public static void registrarUsuario(String nick, String email, String contraseña, String numeroCuenta ) {
-		String sql = "INSERT INTO usuario VALUES('"+nick+"','"+email+"','"+contraseña+"','"+numeroCuenta+"')";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
+		String sql = "INSERT INTO usuario VALUES('"+nick+"','"+email+"','"+contraseña+"','"+numeroCuenta+"')";
 		try {
 			st.executeUpdate(sql);
 		} catch (SQLException e) {
@@ -156,9 +156,9 @@ public class BD {
 		cerrarBD(con, st);
 	}
 	public static void registrarCarta(String nombre, String edicion, String rareza , String precio, String ruta, String referencia, String stock) {
-		String sql = "INSERT INTO Cartas VALUES('"+nombre+"','"+edicion+"','"+rareza+"','"+precio+"','"+ruta+"','"+referencia+"','"+stock+"')";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
+		String sql = "INSERT INTO Cartas VALUES('"+nombre+"','"+edicion+"','"+rareza+"','"+precio+"','"+ruta+"','"+referencia+"','"+stock+"')";
 		System.err.println("Cart a metido?=");
 	
 		try {
