@@ -12,8 +12,6 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 public class PanelFotos extends JPanel{
-
-	
 	
 	
 	private void cargarFotos() {

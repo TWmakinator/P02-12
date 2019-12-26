@@ -107,10 +107,10 @@ public class BD {
 	/*MÉTODOS DEL PROYECTO*/
 	
 	/**
-	 * Devuelve información sobre la existencia del usuario en la bbdd
+	 * Devuelve información sobre la existencia del usuario en la bd
 	 * @param nick
 	 * @param contraseña
-	 * @return  0: Si el nick es incorrecto
+	 * @return   0: Si el nick es incorrecto
 	 *           1: Si el nick es correcto pero la contraseña no
 	 *           2: Si el nick y la contraseña son correctos
 	 
@@ -142,6 +142,30 @@ public class BD {
 		return resultado;
 
 	}
+	public static int buscarNombreUsuario(String nick) {
+		int resultado = 0;
+		String query = "SELECT * FROM usuario WHERE Nick='"+nick+"'";
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		try {
+			ResultSet rs = st.executeQuery(query);
+			if(rs.next()) {
+				String cl = rs.getString(1);
+				if(cl.equals(nick)){
+					resultado = 1; //nombres iguales
+				}
+			}else {
+				resultado = 0; //no encontrado
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cerrarBD(con, st);
+		System.err.println(resultado);
+		return resultado;
+
+	}
 	
 	public static void registrarUsuario(String nick, String email, String contraseña, String numeroCuenta ) {
 		Connection con = BD.initBD("BaseDeDatos.db");
@@ -158,9 +182,7 @@ public class BD {
 	public static void registrarCarta(String nombre, String edicion, String rareza , String precio, String ruta, String referencia, String stock) {
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
-		String sql = "INSERT INTO Cartas VALUES('"+nombre+"','"+edicion+"','"+rareza+"','"+precio+"','"+ruta+"','"+referencia+"','"+stock+"')";
-		System.err.println("Cart a metido?=");
-	
+		String sql = "INSERT INTO Cartas VALUES('"+nombre+"','"+edicion+"','"+rareza+"','"+precio+"','"+ruta+"','"+referencia+"','"+stock+"')";	
 		try {
 			st.executeUpdate(sql);
 		} catch (SQLException e) {
@@ -169,11 +191,51 @@ public class BD {
 		}
 		cerrarBD(con, st);
 	}
+	
+	public static void eliminarCarta(String nombre) {
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		String sql = "DELETE FROM Cartas WHERE Nombre ='"+nombre+"'";
+		try {
+			st.executeUpdate(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cerrarBD(con, st);
+	}
+	public static void cambiarNombreUsuario(String nombre, String nuevoNombre) {
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		String sql = "UPDATE usuario SET Nick ='"+nuevoNombre+"' WHERE Nick ='"+nombre+"'"; 
+		try {
+			st.executeUpdate(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cerrarBD(con, st);
+	}
+	public static void cambiarContraseñaUsuario(String nombre, String nuevaContraseña) {
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		String sql = "UPDATE usuario SET Clave ='"+nuevaContraseña+"' WHERE Nick ='"+nombre+"'"; 
+		try {
+			st.executeUpdate(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cerrarBD(con, st);
+	}
+	
+	
+
 	public static void añadirStock(String nombre, String edicion, String stock) {
 		String sql = "UPDATE Cartas SET (Stock = ?) WHERE (Nombre = ?, Edicion = ?)";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		
-
+	
 		try {
 			PreparedStatement stmt = con.prepareStatement(sql);
 			// las interrogaciones (la primera mete el stmt 1), etc			

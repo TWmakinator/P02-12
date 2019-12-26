@@ -99,7 +99,9 @@ public class VentanaPrincipalAdmin extends JFrame {
 		JButton btnNewButton_2 = new JButton("Eliminar Carta BD");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				VentanaEliminarCarta vn = new VentanaEliminarCarta();
+				vn.setVisible(true);
+				ventana.setVisible(false);
 				
 			}
 		});
@@ -112,6 +114,14 @@ public class VentanaPrincipalAdmin extends JFrame {
 		panel_2.add(btnNewButton_2, gbc_btnNewButton_2);
 		
 		JButton btnNewButton = new JButton("Cambiar Nombre Usuario");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaCambiarNombreUsuario vn = new VentanaCambiarNombreUsuario();
+				vn.setVisible(true);
+				ventana.setVisible(false);
+				
+			}
+		});
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.anchor = GridBagConstraints.NORTHWEST;
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
