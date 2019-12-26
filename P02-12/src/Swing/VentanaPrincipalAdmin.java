@@ -99,7 +99,7 @@ public class VentanaPrincipalAdmin extends JFrame {
 		JButton btnNewButton_2 = new JButton("Eliminar Carta BD");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//BD.eliminarUsuario();
+				
 				
 			}
 		});
