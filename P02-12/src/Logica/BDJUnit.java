@@ -14,7 +14,7 @@ public class BDJUnit {
 	public void RegistrarUsuario() {
 	Connection con = BD.initBD("BaseDeDatos.db");
 	Statement st = BD.usarBD(con);
-	BD.registrarUsuario("test","test@gmail.com", "test","1234567890987654");
+	BD.registrarUsuario("test","test", "test@gmail.com","1234567890987654");
 	int enc = BD.buscarUsuario("test", "test");
 	assertEquals(2, enc);
 }
