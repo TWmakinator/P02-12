@@ -9,6 +9,10 @@ import javax.swing.border.EmptyBorder;
 import Logica.PanelFotos;
 
 import java.awt.GridBagLayout;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.swing.JButton;
 import java.awt.FlowLayout;
 import javax.swing.JLabel;
@@ -19,11 +23,18 @@ import javax.swing.JScrollBar;
 
 public class VentanaPrincipal extends JFrame {
 
+	static Logger log;
 	private JPanel contentPane;
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		try{
+		log= Logger.getLogger("LoggerEjecucion");	
+		}catch(Exception e){
+	}
+		log.log(Level.INFO, " Inicio de la ventana principal" + (new Date()));
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
