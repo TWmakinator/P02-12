@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.awt.Color;
 
 public class PanelFotos extends JPanel{
 	
@@ -31,7 +32,9 @@ public class PanelFotos extends JPanel{
 	 * Crea el panel.
 	 */
 	public PanelFotos(){
-		setLayout(new GridLayout(0, 6, 5, 0));
+		setOpaque(false);	
+		setBackground(Color.WHITE);
+		setLayout(new GridLayout(0, 5, 0, 0));
 		cargarFotos();
 		setVisible(true);
 	}

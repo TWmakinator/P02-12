@@ -23,6 +23,7 @@ import javax.swing.SwingConstants;
 import javax.swing.BoxLayout;
 import net.miginfocom.swing.MigLayout;
 import java.awt.Font;
+import javax.swing.JPasswordField;
 
 public class VentanaLogin extends JFrame {
 
@@ -32,9 +33,17 @@ public class VentanaLogin extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtNick;
-	private JTextField txtClave;
-	private String nick,con;
+	private static String nick;
+	private String con;
+	private JPasswordField txtClave;
+	
 
+	public static String getNick() {
+		return nick;
+	}
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
 
 	/**
 	 * Launch the application.
@@ -91,48 +100,13 @@ public class VentanaLogin extends JFrame {
 		pCentro.add(txtNick, "cell 2 1,growx");
 		txtNick.setColumns(10);
 		
-		JLabel lblContrasea = new JLabel("CONTRASEÑA :");
-		pCentro.add(lblContrasea, "cell 1 2,alignx center");
+		JLabel lblContrasea = new JLabel("CONTRASE\u00D1A :");
+		pCentro.add(lblContrasea, "cell 1 2,alignx trailing");
 		
-		txtClave = new JTextField();
+		txtClave = new JPasswordField();
 		pCentro.add(txtClave, "cell 2 2,growx");
-		txtClave.setColumns(10);
-	
-		JButton btnAceptar = new JButton("Iniciar Sesion");
 		
 		JFrame ventana=this;
-		
-		btnAceptar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				// comprobara los datos nick y pass, 
-				//si son correctos abre la ventana principal  si no muestra un show dialog de error a la hora de inicia sesion.
-			
-				int resultado = BD.buscarUsuario(txtNick.getText(), txtClave.getText());
-				if(resultado == 2) {
-					JOptionPane.showMessageDialog(null, "Inicio de sesión correcto", "INICIO SESIÓN", JOptionPane.INFORMATION_MESSAGE);
-					nick = txtNick.getText();
-					con = txtClave.getText();
-					
-						ventana.setVisible(false);
-						if(nick.equals("admin") && con.equals("admin1")) {
-							VentanaPrincipalAdmin vpa =  new VentanaPrincipalAdmin();
-							vpa.setVisible(true);
-						}else {
-							VentanaPrincipal vpc= new VentanaPrincipal();
-							vpc.setVisible(true);
-						}
-						
-				}else if (resultado == 1){
-					JOptionPane.showMessageDialog(null, "Clave incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);
-				}else {
-					JOptionPane.showMessageDialog(null, "Usuario desconocido", "ERROR", JOptionPane.ERROR_MESSAGE);
-				}
-				vaciarCampos();
-			}
-		});
-		btnAceptar.setForeground(Color.BLACK);
-		btnAceptar.setBackground(Color.WHITE);
-		pAbajo.add(btnAceptar);
 		
 		
 		JButton btnR = new JButton("Registrarse");
@@ -145,6 +119,40 @@ public class VentanaLogin extends JFrame {
 			}
 		});
 		pAbajo.add(btnR);
+		
+			JButton btnAceptar = new JButton("Iniciar Sesion");
+			
+			btnAceptar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					// comprobara los datos nick y pass, 
+					//si son correctos abre la ventana principal  si no muestra un show dialog de error a la hora de inicia sesion.
+				
+					int resultado = BD.buscarUsuario(txtNick.getText(), txtClave.getText());
+					if(resultado == 2) {
+						JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "INICIO SESION", JOptionPane.INFORMATION_MESSAGE);
+						nick = txtNick.getText();
+						con = txtClave.getText();
+						
+							ventana.setVisible(false);
+							if(nick.equals("admin") && con.equals("admin1")) {
+								VentanaPrincipalAdmin vpa =  new VentanaPrincipalAdmin();
+								vpa.setVisible(true);
+							}else {
+								VentanaPrincipal vpc= new VentanaPrincipal();
+								vpc.setVisible(true);
+							}
+							
+					}else if (resultado == 1){
+						JOptionPane.showMessageDialog(null, "Clave incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);
+					}else {
+						JOptionPane.showMessageDialog(null, "Usuario desconocido", "ERROR", JOptionPane.ERROR_MESSAGE);
+					}
+					vaciarCampos();
+				}
+			});
+			btnAceptar.setForeground(Color.BLACK);
+			btnAceptar.setBackground(Color.WHITE);
+			pAbajo.add(btnAceptar);
 
 		
 

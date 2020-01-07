@@ -19,11 +19,11 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
 
-public class VentanaCambiarContraseña extends JFrame {
+public class VentanaCambiarContrase�a extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtNombre;
-	private JTextField txtNuevaContraseña;
+	private JTextField txtNuevaContrase�a;
 
 	/**
 	 * Launch the application.
@@ -32,7 +32,7 @@ public class VentanaCambiarContraseña extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaCambiarContraseña frame = new VentanaCambiarContraseña();
+					VentanaCambiarContrase�a frame = new VentanaCambiarContrase�a();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +44,7 @@ public class VentanaCambiarContraseña extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaCambiarContraseña() {
+	public VentanaCambiarContrase�a() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 165);
@@ -57,8 +57,8 @@ public class VentanaCambiarContraseña extends JFrame {
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.NORTH);
 		
-		JLabel lblCambiarContraseñaUsuario = new JLabel("Cambiar Contraseña Usuario");
-		panel.add(lblCambiarContraseñaUsuario);
+		JLabel lblCambiarContrase�aUsuario = new JLabel("Cambiar Contrase�a Usuario");
+		panel.add(lblCambiarContrase�aUsuario);
 		
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.CENTER);
@@ -86,7 +86,7 @@ public class VentanaCambiarContraseña extends JFrame {
 		panel_1.add(txtNombre, gbc_txtNombre);
 		txtNombre.setColumns(10);
 		
-		JLabel lblNuevaContrasea = new JLabel("Nueva Contraseña:");
+		JLabel lblNuevaContrasea = new JLabel("Nueva Contrase�a:");
 		GridBagConstraints gbc_lblNuevaContrasea = new GridBagConstraints();
 		gbc_lblNuevaContrasea.insets = new Insets(0, 0, 0, 5);
 		gbc_lblNuevaContrasea.anchor = GridBagConstraints.WEST;
@@ -94,14 +94,14 @@ public class VentanaCambiarContraseña extends JFrame {
 		gbc_lblNuevaContrasea.gridy = 3;
 		panel_1.add(lblNuevaContrasea, gbc_lblNuevaContrasea);
 		
-		txtNuevaContraseña = new JTextField();
-		GridBagConstraints gbc_txtNuevaContraseña = new GridBagConstraints();
-		gbc_txtNuevaContraseña.insets = new Insets(0, 0, 0, 5);
-		gbc_txtNuevaContraseña.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtNuevaContraseña.gridx = 4;
-		gbc_txtNuevaContraseña.gridy = 3;
-		panel_1.add(txtNuevaContraseña, gbc_txtNuevaContraseña);
-		txtNuevaContraseña.setColumns(10);
+		txtNuevaContrase�a = new JTextField();
+		GridBagConstraints gbc_txtNuevaContrase�a = new GridBagConstraints();
+		gbc_txtNuevaContrase�a.insets = new Insets(0, 0, 0, 5);
+		gbc_txtNuevaContrase�a.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtNuevaContrase�a.gridx = 4;
+		gbc_txtNuevaContrase�a.gridy = 3;
+		panel_1.add(txtNuevaContrase�a, gbc_txtNuevaContrase�a);
+		txtNuevaContrase�a.setColumns(10);
 		
 		JPanel panel_2 = new JPanel();
 		contentPane.add(panel_2, BorderLayout.SOUTH);
@@ -109,7 +109,7 @@ public class VentanaCambiarContraseña extends JFrame {
 		JButton btnCambiar = new JButton("Cambiar");
 		btnCambiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(txtNombre.getText().equals("")|| txtNuevaContraseña.getText().equals("") ) {
+				if(txtNombre.getText().equals("")|| txtNuevaContrase�a.getText().equals("") ) {
 					JOptionPane.showMessageDialog(null, "Hay que rellenar todos los campos", "ERROR", JOptionPane.ERROR_MESSAGE);
 				
 				}else {
@@ -117,8 +117,7 @@ public class VentanaCambiarContraseña extends JFrame {
 						
 						int resultado = BD.buscarNombreUsuario(txtNombre.getText()); 						
 						if(resultado != 0) {
-						BD.cambiarContraseñaUsuario(txtNombre.getText(), txtNuevaContraseña.getText());	
-						JOptionPane.showMessageDialog(null, "La Contraseña del Usuario ya ha sido modificada", "Perfecto", JOptionPane.ERROR_MESSAGE);
+						BD.cambiarContrase�aUsuario(txtNombre.getText(), txtNuevaContrase�a.getText());	
 						ventana.setVisible(false);
 						VentanaPrincipalAdmin vp = new VentanaPrincipalAdmin();
 						vp.setVisible(true);

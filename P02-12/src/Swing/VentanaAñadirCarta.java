@@ -18,7 +18,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
 
-public class VentanaAñadirCarta extends JFrame {
+public class VentanaA�adirCarta extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtEdicion;
@@ -36,7 +36,7 @@ public class VentanaAñadirCarta extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaAñadirCarta frame = new VentanaAñadirCarta();
+					VentanaA�adirCarta frame = new VentanaA�adirCarta();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,7 +48,7 @@ public class VentanaAñadirCarta extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaAñadirCarta() {
+	public VentanaA�adirCarta() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -59,7 +59,7 @@ public class VentanaAñadirCarta extends JFrame {
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.NORTH);
 		
-		JLabel lblAadirelimonarCarta = new JLabel("Añadir Carta");
+		JLabel lblAadirelimonarCarta = new JLabel("A�adir Carta");
 		panel.add(lblAadirelimonarCarta);
 		
 		JPanel panel_2 = new JPanel();
@@ -208,10 +208,10 @@ public class VentanaAñadirCarta extends JFrame {
 		contentPane.add(panel_1, BorderLayout.SOUTH);
 		JFrame ventana = this;
 		
-		JButton btnAadir = new JButton("Añadir");
+		JButton btnAadir = new JButton("A�adir");
 		btnAadir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Añade la carta a la bd
+				//A�ade la carta a la bd
 				
 				if(txtNombre.getText().equals("")|| txtEdicion.getText().equals("") || txtRareza.getText().equals("")|| txtPrecio.getText().equals("")|| txtReferencia.getText().equals("")|| txtRuta.getText().equals("")|| txtStock.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Hay que rellenar todos los campos", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -220,12 +220,12 @@ public class VentanaAñadirCarta extends JFrame {
 					try {
 						int resultado = BD.buscarCarta(txtNombre.getText());
 						if(resultado == 1) {
-							JOptionPane.showMessageDialog(null, "Esta Carta ya existe, Se sumara al stock la cantidad indicada", "ERROR", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Esta Carta ya existe, Se sumara al stock la cantidad indicada", "Atencion", JOptionPane.WARNING_MESSAGE);
 							//Suma el stock indicado mas lo que teniamos
 								
 						}else {	
 							BD.registrarCarta(txtNombre.getText(),txtEdicion.getText(),txtRareza.getText(),txtPrecio.getText(),txtReferencia.getText(),txtRuta.getText(),txtStock.getText());
-							JOptionPane.showMessageDialog(null, "Carta Añadida a la BD", "Exito", JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Carta A�adida a la BD", "Exito", JOptionPane.INFORMATION_MESSAGE);
 							ventana.setVisible(false);
 							VentanaPrincipalAdmin vl = new VentanaPrincipalAdmin();
 							vl.setVisible(true);

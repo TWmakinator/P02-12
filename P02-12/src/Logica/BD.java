@@ -116,7 +116,7 @@ public class BD {
 	 
 	 */
 	
-	public static int buscarUsuario(String nick, String contraseÃ±a) {
+	public static int buscarUsuario(String nick, String contraseña) {
 		int resultado = 0;
 		String query = "SELECT * FROM usuario WHERE Nick='"+nick+"'";
 		Connection con = BD.initBD("BaseDeDatos.db");
@@ -125,7 +125,7 @@ public class BD {
 			ResultSet rs = st.executeQuery(query);
 			if(rs.next()) {
 				String cl = rs.getString(2);
-				if(cl.equals(contraseÃ±a)){
+				if(cl.equals(contraseña)){
 					resultado = 2;
 				}else {
 					resultado = 1;
@@ -167,10 +167,10 @@ public class BD {
 
 	}
 	
-	public static void registrarUsuario(String nick, String email, String contraseÃ±a, String numeroCuenta ) {
+	public static void registrarUsuario(String nick, String email, String contraseña) {
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
-		String sql = "INSERT INTO usuario VALUES('"+nick+"','"+email+"','"+contraseÃ±a+"','"+numeroCuenta+"')";
+		String sql = "INSERT INTO usuario VALUES('"+nick+"','"+email+"','"+contraseña+"')";
 		try {
 			st.executeUpdate(sql);
 		} catch (SQLException e) {
@@ -216,10 +216,10 @@ public class BD {
 		}
 		cerrarBD(con, st);
 	}
-	public static void cambiarContraseÃ±aUsuario(String nombre, String nuevaContraseÃ±a) {
+	public static void cambiarContraseñaUsuario(String nombre, String nuevaContraseña) {
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
-		String sql = "UPDATE usuario SET Clave ='"+nuevaContraseÃ±a+"' WHERE Nick ='"+nombre+"'"; 
+		String sql = "UPDATE usuario SET Clave ='"+nuevaContraseña+"' WHERE Nick ='"+nombre+"'"; 
 		try {
 			st.executeUpdate(sql);
 		} catch (SQLException e) {
@@ -231,7 +231,7 @@ public class BD {
 	
 	
 
-	public static void aÃ±adirStock(String nombre, String edicion, String stock) {
+	public static void añadirStock(String nombre, String edicion, String stock) {
 		String sql = "UPDATE Cartas SET (Stock = ?) WHERE (Nombre = ?, Edicion = ?)";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		

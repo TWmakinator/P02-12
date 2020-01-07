@@ -76,7 +76,7 @@ public class VentanaCambiarNombreUsuario extends JFrame {
 						int resultado = BD.buscarNombreUsuario(txtNombre.getText()); //si no tira, Crar otro metodo que no le pasemos el pass
 						if(resultado != 0) {
 						BD.cambiarNombreUsuario(txtNombre.getText(), txtNuevoNombre.getText());	
-						JOptionPane.showMessageDialog(null, "El Nombre del Usuario ya ha sido Modificado", "Perfecto", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "El Nombre del Usuario ya ha sido Modificado", "Perfecto", JOptionPane.INFORMATION_MESSAGE);
 						ventana.setVisible(false);
 						VentanaPrincipalAdmin vp = new VentanaPrincipalAdmin();
 						vp.setVisible(true);
