@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.BoxLayout;
 import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 
 public class VentanaPrincipal extends JFrame {
 
@@ -64,8 +65,10 @@ public class VentanaPrincipal extends JFrame {
 		JLabel lblVentanaCliente = new JLabel("VentanaCliente");
 		panelNorte.add(lblVentanaCliente);
 		
+		
 		JPanel panelCentro = new PanelFotos();
-		contentPane.add(panelCentro, BorderLayout.CENTER);
+		JScrollPane scroll = new JScrollPane(panelCentro);
+		contentPane.add(scroll, BorderLayout.CENTER);
 	}
 
 }
