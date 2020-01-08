@@ -1,4 +1,5 @@
 package Swing;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -53,16 +54,16 @@ public class VentanaRegistro extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
+
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.NORTH);
-		
+
 		JLabel lblRegistro = new JLabel("Registro");
 		panel.add(lblRegistro);
-		
+
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.SOUTH);
-		
+
 		JFrame ventana = this;
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
@@ -73,43 +74,47 @@ public class VentanaRegistro extends JFrame {
 			}
 		});
 		panel_1.add(btnVolver);
-		
+
 		JButton bntRegistrar = new JButton("Registrarse");
 		bntRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Añade el user a la bd
-				
-				if(txtNombre.getText().equals("")|| txtEmail.getText().equals("") || txtContraseña.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Hay que rellenar todos los campos", "ERROR", JOptionPane.ERROR_MESSAGE);
-				}else {
+				// Añade el user a la bd
+
+				if (txtNombre.getText().equals("") || txtEmail.getText().equals("")
+						|| txtContraseña.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "Hay que rellenar todos los campos", "ERROR",
+							JOptionPane.ERROR_MESSAGE);
+				} else {
 					try {
 						int resultado = BD.buscarUsuario(txtNombre.getText(), txtContraseña.getText());
-						if(resultado != 0) {
-							JOptionPane.showMessageDialog(null, "Este usuario ya existe", "ERROR", JOptionPane.ERROR_MESSAGE);
-						}else {	
-							BD.registrarUsuario(txtNombre.getText(),txtEmail.getText(), txtContraseña.getText());
-							JOptionPane.showMessageDialog(null, "Registro realizado con Exito", "REGISTRO", JOptionPane.INFORMATION_MESSAGE);
+						if (resultado != 0) {
+							JOptionPane.showMessageDialog(null, "Este usuario ya existe", "ERROR",
+									JOptionPane.ERROR_MESSAGE);
+						} else {
+							BD.registrarUsuario(txtNombre.getText(), txtEmail.getText(), txtContraseña.getText());
+							JOptionPane.showMessageDialog(null, "Registro realizado con Exito", "REGISTRO",
+									JOptionPane.INFORMATION_MESSAGE);
 							ventana.setVisible(false);
 							VentanaLogin vl = new VentanaLogin();
 							vl.setVisible(true);
 						}
-					}catch(NumberFormatException e1) {
-						
+					} catch (NumberFormatException e1) {
+
 					}
 				}
 			}
 		});
 		panel_1.add(bntRegistrar);
-		
+
 		JPanel panel_2 = new JPanel();
 		contentPane.add(panel_2, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
-		gbl_panel_2.columnWidths = new int[]{0, 0, 0, 0, 149, 0};
-		gbl_panel_2.rowHeights = new int[] {40, 30, 30, 30, 0, 31, 25};
-		gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_2.columnWidths = new int[] { 0, 0, 0, 0, 149, 0 };
+		gbl_panel_2.rowHeights = new int[] { 40, 30, 30, 30, 0, 31, 25 };
+		gbl_panel_2.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel_2.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_2.setLayout(gbl_panel_2);
-		
+
 		JLabel lblNombre = new JLabel("Nombre:");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.anchor = GridBagConstraints.WEST;
@@ -117,7 +122,7 @@ public class VentanaRegistro extends JFrame {
 		gbc_lblNewLabel.gridx = 2;
 		gbc_lblNewLabel.gridy = 1;
 		panel_2.add(lblNombre, gbc_lblNewLabel);
-		
+
 		txtNombre = new JTextField();
 		GridBagConstraints gbc_txtNombre = new GridBagConstraints();
 		gbc_txtNombre.insets = new Insets(0, 0, 5, 0);
@@ -126,7 +131,7 @@ public class VentanaRegistro extends JFrame {
 		gbc_txtNombre.gridy = 1;
 		panel_2.add(txtNombre, gbc_txtNombre);
 		txtNombre.setColumns(10);
-		
+
 		JLabel lblEmail = new JLabel("Email:");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.anchor = GridBagConstraints.WEST;
@@ -134,7 +139,7 @@ public class VentanaRegistro extends JFrame {
 		gbc_lblNewLabel_1.gridx = 2;
 		gbc_lblNewLabel_1.gridy = 2;
 		panel_2.add(lblEmail, gbc_lblNewLabel_1);
-		
+
 		txtEmail = new JTextField();
 		GridBagConstraints gbc_txtEmail = new GridBagConstraints();
 		gbc_txtEmail.insets = new Insets(0, 0, 5, 0);
@@ -143,7 +148,7 @@ public class VentanaRegistro extends JFrame {
 		gbc_txtEmail.gridy = 2;
 		panel_2.add(txtEmail, gbc_txtEmail);
 		txtEmail.setColumns(10);
-		
+
 		JLabel lblContraseña = new JLabel("Contraseña:");
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.anchor = GridBagConstraints.WEST;
@@ -151,7 +156,7 @@ public class VentanaRegistro extends JFrame {
 		gbc_lblNewLabel_2.gridx = 2;
 		gbc_lblNewLabel_2.gridy = 3;
 		panel_2.add(lblContraseña, gbc_lblNewLabel_2);
-		
+
 		txtContraseña = new JPasswordField();
 		GridBagConstraints gbc_txtContraseña = new GridBagConstraints();
 		gbc_txtContraseña.insets = new Insets(0, 0, 5, 0);

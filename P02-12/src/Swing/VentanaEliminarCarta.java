@@ -52,47 +52,49 @@ public class VentanaEliminarCarta extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
+
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.NORTH);
-		
+
 		JLabel lblEliminarCarta = new JLabel("Eliminar Carta");
 		panel.add(lblEliminarCarta);
-		
+
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.SOUTH);
 		JFrame ventana = this;
-		
+
 		JButton btnEliminar = new JButton("Eliminar ");
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				if(txtEliminar.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Tienes que escribir el nombre de la carta a borrar", "ERROR", JOptionPane.ERROR_MESSAGE);				
-			 	}else {
+
+				if (txtEliminar.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "Tienes que escribir el nombre de la carta a borrar", "ERROR",
+							JOptionPane.ERROR_MESSAGE);
+				} else {
 					try {
 						int resultado = BD.buscarCarta(txtEliminar.getText());
-						if(resultado == 2) {							
+						if (resultado == 2) {
 							BD.eliminarCarta(txtEliminar.getText());
 							JOptionPane.showMessageDialog(null, "Carta Eliminada", "Exito", JOptionPane.ERROR_MESSAGE);
-							
+
 							ventana.setVisible(false);
 							VentanaPrincipalAdmin vl = new VentanaPrincipalAdmin();
-							vl.setVisible(true);	
-							
-						}else {								
-							JOptionPane.showMessageDialog(null, "La Carta que deseas eliminar no esta en el stock", "Error", JOptionPane.INFORMATION_MESSAGE);
-						
+							vl.setVisible(true);
+
+						} else {
+							JOptionPane.showMessageDialog(null, "La Carta que deseas eliminar no esta en el stock",
+									"Error", JOptionPane.INFORMATION_MESSAGE);
+
 						}
-					}catch(NumberFormatException e1) {
-						
+					} catch (NumberFormatException e1) {
+
 					}
-			 	}
-				
+				}
+
 			}
 		});
 		panel_1.add(btnEliminar);
-		
+
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -102,23 +104,23 @@ public class VentanaEliminarCarta extends JFrame {
 			}
 		});
 		panel_1.add(btnVolver);
-		
+
 		JPanel panel_2 = new JPanel();
 		contentPane.add(panel_2, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
-		gbl_panel_2.columnWidths = new int[]{0, 0, 0, 165, 0, 0};
-		gbl_panel_2.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
-		gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_2.columnWidths = new int[] { 0, 0, 0, 165, 0, 0 };
+		gbl_panel_2.rowHeights = new int[] { 0, 0, 0, 0, 0, 0 };
+		gbl_panel_2.columnWeights = new double[] { 0.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE };
+		gbl_panel_2.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_2.setLayout(gbl_panel_2);
-		
+
 		JLabel lblNombreCarta = new JLabel("Nombre de la Carta :");
 		GridBagConstraints gbc_lblNombreCarta = new GridBagConstraints();
 		gbc_lblNombreCarta.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNombreCarta.gridx = 2;
 		gbc_lblNombreCarta.gridy = 2;
 		panel_2.add(lblNombreCarta, gbc_lblNombreCarta);
-		
+
 		txtEliminar = new JTextField();
 		GridBagConstraints gbc_txtEliminar = new GridBagConstraints();
 		gbc_txtEliminar.insets = new Insets(0, 0, 5, 5);

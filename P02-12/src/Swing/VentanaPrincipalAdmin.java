@@ -1,4 +1,5 @@
 package Swing;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -47,45 +48,45 @@ public class VentanaPrincipalAdmin extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
+
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.NORTH);
-		
+
 		JLabel lblVentanaadmin = new JLabel("VentanaAdmin");
 		panel.add(lblVentanaadmin);
-		
+
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.SOUTH);
 		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
+
 		JFrame ventana = this;
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				ventana.setVisible(false);
 				VentanaLogin vl = new VentanaLogin();
 				vl.setVisible(true);
 			}
 		});
 		panel_1.add(btnVolver);
-		
+
 		JPanel panel_2 = new JPanel();
 		contentPane.add(panel_2, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
-		gbl_panel_2.columnWidths = new int[] {200, 0, 202, 0};
-		gbl_panel_2.rowHeights = new int[] {30, 30, 29, 29, 29, 30, 50};
-		gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+		gbl_panel_2.columnWidths = new int[] { 200, 0, 202, 0 };
+		gbl_panel_2.rowHeights = new int[] { 30, 30, 29, 29, 29, 30, 50 };
+		gbl_panel_2.columnWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel_2.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
 		panel_2.setLayout(gbl_panel_2);
-		
+
 		JButton btnNewButton_1 = new JButton("Añadir Carta BD");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanaAñadirCarta vn = new VentanaAñadirCarta();
 				vn.setVisible(true);
 				ventana.setVisible(false);
-				
+
 			}
 		});
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
@@ -95,14 +96,14 @@ public class VentanaPrincipalAdmin extends JFrame {
 		gbc_btnNewButton_1.gridx = 1;
 		gbc_btnNewButton_1.gridy = 2;
 		panel_2.add(btnNewButton_1, gbc_btnNewButton_1);
-		
+
 		JButton btnNewButton_2 = new JButton("Eliminar Carta BD");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanaEliminarCarta vn = new VentanaEliminarCarta();
 				vn.setVisible(true);
 				ventana.setVisible(false);
-				
+
 			}
 		});
 		GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
@@ -112,14 +113,14 @@ public class VentanaPrincipalAdmin extends JFrame {
 		gbc_btnNewButton_2.gridx = 1;
 		gbc_btnNewButton_2.gridy = 3;
 		panel_2.add(btnNewButton_2, gbc_btnNewButton_2);
-		
+
 		JButton btnNewButton = new JButton("Cambiar Nombre Usuario");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanaCambiarNombreUsuario vn = new VentanaCambiarNombreUsuario();
 				vn.setVisible(true);
 				ventana.setVisible(false);
-				
+
 			}
 		});
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
@@ -128,13 +129,13 @@ public class VentanaPrincipalAdmin extends JFrame {
 		gbc_btnNewButton.gridx = 1;
 		gbc_btnNewButton.gridy = 4;
 		panel_2.add(btnNewButton, gbc_btnNewButton);
-		
+
 		JButton btnNewButton_3 = new JButton("Cambiar Clave Usuario");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VentanaCambiarContraseña vc = new VentanaCambiarContraseña();
 				vc.setVisible(true);
-				ventana.setVisible(false);	
+				ventana.setVisible(false);
 			}
 		});
 		GridBagConstraints gbc_btnNewButton_3 = new GridBagConstraints();
