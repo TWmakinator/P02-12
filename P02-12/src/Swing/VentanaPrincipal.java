@@ -109,6 +109,7 @@ public class VentanaPrincipal extends JFrame {
 		btnCarrito.setBackground(Color.WHITE);
 		btnCarrito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				log.log(Level.INFO, "Entrando al carrito" + (new Date()));
 			}
 		});
 		btnCarrito.setIcon(new ImageIcon("FotosExtra/Carrito.png"));
@@ -130,6 +131,7 @@ public class VentanaPrincipal extends JFrame {
 				ventana.setVisible(false);
 				VentanaLogin va = new VentanaLogin();
 				va.setVisible(true);
+				log.log(Level.INFO, "Cerrando la sesion actual" + (new Date()));
 			}
 		});
 		panelSur.add(btnCerrarSesion);

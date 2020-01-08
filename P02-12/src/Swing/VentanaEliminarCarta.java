@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
+import java.util.logging.Logger;
 import java.awt.event.ActionEvent;
 
 public class VentanaEliminarCarta extends JFrame {

@@ -31,6 +31,7 @@ public class VentanaPrincipalAdmin extends JFrame {
 				try {
 					VentanaPrincipalAdmin frame = new VentanaPrincipalAdmin();
 					frame.setVisible(true);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
