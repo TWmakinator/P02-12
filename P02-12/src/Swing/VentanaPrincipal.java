@@ -109,7 +109,7 @@ public class VentanaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnCarrito.setIcon(new ImageIcon("C:\\Users\\Tucutufelo\\git\\P02-12\\P02-12\\FotosExtra\\Carrito.png"));
+		btnCarrito.setIcon(new ImageIcon("FotosExtra/Carrito.png"));
 		GridBagConstraints gbc_btnCarrito = new GridBagConstraints();
 		gbc_btnCarrito.gridx = 3;
 		gbc_btnCarrito.gridy = 0;
