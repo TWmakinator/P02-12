@@ -15,17 +15,28 @@ import java.awt.Color;
 
 public class PanelFotos extends JPanel {
 
-	private void cargarFotos() {
+	private void cargarFotos(Carta c) {
+		System.out.println(c.getNombreCarta()+" "+c.getRareza()+" "+c.getEdicion()+" "+c.getPrecio());
 		ArrayList<String> rutas;
-		rutas = BD.obtenerTodasRutasFotos();
-		for (int i = 0; i < rutas.size(); i++) {
-
-			ImageIcon im = new ImageIcon(rutas.get(i));
-			im.setDescription(rutas.get(i));
-			JLabel lblFoto = new JLabel(im);
-			JPanel pFoto = new JPanel();
-			pFoto.add(lblFoto);
-			add(pFoto);
+		if(c.getNombreCarta().equals("") && c.getRareza().equals("") && c.getEdicion().equals("") && c.getPrecio().equals("")) { //casteo Double String
+			rutas = BD.obtenerTodasRutasFotos();
+			System.out.println("Tamaño del array "+rutas.size());
+		}
+		else if(c.getEdicion().equals("")) {
+			rutas = BD.obtenerRutasFotos(c.getNombreCarta(), c.getRareza(), c.getPrecio());
+			
+		}
+		else if(c.getRareza().equals("")) {
+			rutas = BD.obtenerRutasFotos1(c.getNombreCarta(), c.getEdicion(), c.getPrecio());
+			
+		}else {
+			rutas = BD.obtenerRutasFotos2(c.getNombreCarta(), c.getRareza(), c.getPrecio(), c.getEdicion());
+		
+		}
+		for(int i=0;i<rutas.size();i++) {
+			String ruta = rutas.get(i);
+			PanelInfoFoto p = new PanelInfoFoto(ruta);
+			add(p);
 		}
 	}
 
@@ -36,7 +47,7 @@ public class PanelFotos extends JPanel {
 		setOpaque(false);
 		setBackground(Color.WHITE);
 		setLayout(new GridLayout(0, 5, 0, 0));
-		cargarFotos();
+		cargarFotos(null);
 		setVisible(true);
 	}
 

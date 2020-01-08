@@ -303,6 +303,7 @@ public class BD {
 	}
 
 	public static ArrayList<String> obtenerTodasRutasFotos() {
+
 		ArrayList<String> rutas = new ArrayList<String>();
 		String sql = "SELECT Ruta FROM Cartas";
 		Connection con = BD.initBD("BaseDeDatos.db");
@@ -324,12 +325,52 @@ public class BD {
 
 	}
 
-	public static ArrayList<String> obtenerRutasFotos2(String nombre, String edicion, String rareza, String precio) {
+	public static ArrayList<String> obtenerRutasFotos(Carta c){
+
+		ArrayList<String> rutas = new ArrayList<String>();
+		String sql = "SELECT ruta FROM Cartas WHERE Nombre='"+c.getNombreCarta()+"' AND Rareza='"+c.getRareza()+"' AND Precio='"+c.getPrecio()+"'";
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		try {
+			ResultSet rs = st.executeQuery(sql);
+			while(rs.next()) {
+				String r = rs.getString("ruta");
+				rutas.add(r);
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cerrarBD(con, st);
+		return rutas;
+		}	
+	public static ArrayList<String> obtenerRutasFotos1(Carta c){
+
+		ArrayList<String> rutas = new ArrayList<String>();
+		String sql = "SELECT ruta FROM Cartas WHERE Nombre='"+c.getNombreCarta()+"' AND Edicion='"+c.getEdicion()+"' AND Precio='"+c.getPrecio()+"'";
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		try {
+			ResultSet rs = st.executeQuery(sql);
+			while(rs.next()) {
+				String r = rs.getString("ruta");
+				rutas.add(r);
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cerrarBD(con, st);
+		return rutas;
+		}	
+	public static ArrayList<String> obtenerRutasFotos2(Carta c) { 
 		ArrayList<String> rutas = new ArrayList<String>();
 		String sql = "";
-		if (nombre.equals("") && edicion.equals("") && rareza.equals("") && precio.equals(""))
-			sql = "SELECT ruta FROM producto WHERE Nombre='" + nombre + "' AND Edicion='" + edicion + "' AND Rareza='"
-					+ rareza + "'" + "' AND Precio='" + precio;
+		if (c.getNombreCarta().equals("") && c.getEdicion().equals("") && c.getRareza().equals("") && c.getPrecio().equals("")) //cast
+			sql = "SELECT ruta FROM producto WHERE Nombre='" + c.getNombreCarta() + "' AND Edicion='" + c.getEdicion() + "' AND Rareza='"
+					+ c.getEdicion() + "'" + "' AND Precio='" + c.getPrecio();
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
 
@@ -348,7 +389,8 @@ public class BD {
 		return rutas;
 
 	}
-
+	
+	
 	public static float obtenerPrecioCarta(String ruta) {
 		String sql = "SELECT Precio FROM Cartas WHERE Ruta='" + ruta + "'";
 		Connection con = BD.initBD("BaseDeDatos.db");
