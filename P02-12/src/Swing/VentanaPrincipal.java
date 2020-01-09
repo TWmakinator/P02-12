@@ -44,7 +44,7 @@ public class VentanaPrincipal extends JFrame {
 			log = Logger.getLogger("LoggerEjecucion");
 		} catch (Exception e) {
 		}
-		log.log(Level.INFO, " Inicio de la ventana principal" + (new Date()));
+		log.log(Level.INFO, " Inicio de la ventana principal: " + (new Date()));
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

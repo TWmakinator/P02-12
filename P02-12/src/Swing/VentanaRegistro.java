@@ -26,7 +26,7 @@ public class VentanaRegistro extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtEmail;
 	private JTextField txtNombre;
-	private JPasswordField txtContraseña;
+	private JPasswordField txtContrasenya;
 
 	/**
 	 * Launch the application.
@@ -78,20 +78,20 @@ public class VentanaRegistro extends JFrame {
 		JButton bntRegistrar = new JButton("Registrarse");
 		bntRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Añade el user a la bd
+				// Anyade el user a la bd
 
 				if (txtNombre.getText().equals("") || txtEmail.getText().equals("")
-						|| txtContraseña.getText().equals("")) {
+						|| txtContrasenya.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Hay que rellenar todos los campos", "ERROR",
 							JOptionPane.ERROR_MESSAGE);
 				} else {
 					try {
-						int resultado = BD.buscarUsuario(txtNombre.getText(), txtContraseña.getText());
+						int resultado = BD.buscarUsuario(txtNombre.getText(), txtContrasenya.getText());
 						if (resultado != 0) {
 							JOptionPane.showMessageDialog(null, "Este usuario ya existe", "ERROR",
 									JOptionPane.ERROR_MESSAGE);
 						} else {
-							BD.registrarUsuario(txtNombre.getText(), txtEmail.getText(), txtContraseña.getText());
+							BD.registrarUsuario(txtNombre.getText(), txtEmail.getText(), txtContrasenya.getText());
 							JOptionPane.showMessageDialog(null, "Registro realizado con Exito", "REGISTRO",
 									JOptionPane.INFORMATION_MESSAGE);
 							ventana.setVisible(false);
@@ -149,21 +149,21 @@ public class VentanaRegistro extends JFrame {
 		panel_2.add(txtEmail, gbc_txtEmail);
 		txtEmail.setColumns(10);
 
-		JLabel lblContraseña = new JLabel("Contraseña:");
+		JLabel lblContrasenya = new JLabel("Contrasenya:");
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.anchor = GridBagConstraints.WEST;
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_2.gridx = 2;
 		gbc_lblNewLabel_2.gridy = 3;
-		panel_2.add(lblContraseña, gbc_lblNewLabel_2);
+		panel_2.add(lblContrasenya, gbc_lblNewLabel_2);
 
-		txtContraseña = new JPasswordField();
-		GridBagConstraints gbc_txtContraseña = new GridBagConstraints();
-		gbc_txtContraseña.insets = new Insets(0, 0, 5, 0);
-		gbc_txtContraseña.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtContraseña.gridx = 4;
-		gbc_txtContraseña.gridy = 3;
-		panel_2.add(txtContraseña, gbc_txtContraseña);
+		txtContrasenya = new JPasswordField();
+		GridBagConstraints gbc_txtContrasenya = new GridBagConstraints();
+		gbc_txtContrasenya.insets = new Insets(0, 0, 5, 0);
+		gbc_txtContrasenya.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtContrasenya.gridx = 4;
+		gbc_txtContrasenya.gridy = 3;
+		panel_2.add(txtContrasenya, gbc_txtContrasenya);
 	}
 
 }

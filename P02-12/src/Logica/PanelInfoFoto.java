@@ -37,7 +37,7 @@ public class PanelInfoFoto extends JPanel {
 	 */
 	public PanelInfoFoto(String ruta) {
 		this.ruta = ruta;
-		
+		Carta c = BD.obtenerDatosCarta(ruta);
 		setLayout(new GridBagLayout());
 		ImageIcon im = new ImageIcon(ruta);
 		im.setDescription(ruta);
@@ -50,28 +50,28 @@ public class PanelInfoFoto extends JPanel {
 
 		add(lblfoto, constraints);
 
-		JLabel lblNombreCarta = new JLabel(BD.obtenerNombreCarta(ruta));
+		JLabel lblNombreCarta = new JLabel(c.getNombreCarta());
 		constraints.gridx = 4; // En qué columna empieza
 		constraints.gridy = 6; // En qué fila empieza
 		constraints.gridwidth = 3; // Cuántas columnas ocupa
 		constraints.gridheight = 1; // Cuántas filas ocupa
 		add(lblNombreCarta, constraints);
 
-		JLabel lblRareza = new JLabel(BD.obtenerRarezaCarta(ruta));
+		JLabel lblRareza = new JLabel(c.getRareza());
 		constraints.gridx = 4; // En qué columna empieza
 		constraints.gridy = 7; // En qué fila empieza
 		constraints.gridwidth = 3; // Cuántas columnas ocupa
 		constraints.gridheight = 1; // Cuántas filas ocupa
 		add(lblRareza, constraints);
 
-		JLabel lblPrecio = new JLabel(String.valueOf(BD.obtenerPrecioCarta(ruta)));
+		JLabel lblPrecio = new JLabel(String.valueOf(c.getPrecio()));
 		constraints.gridx = 4; // En qué columna empieza
 		constraints.gridy = 8; // En qué fila empieza
 		constraints.gridwidth = 3; // Cuántas columnas ocupa
 		constraints.gridheight = 1; // Cuántas filas ocupa
 		add(lblPrecio, constraints);
 
-		Border line = BorderFactory.createLineBorder(Color.BLACK, 2);
+		Border line = BorderFactory.createLineBorder(Color.LIGHT_GRAY, 2);
 		setBorder(line);
 	}
 

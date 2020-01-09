@@ -19,7 +19,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
 
-public class VentanaAñadirCarta extends JFrame {
+public class VentanaAnyadirCarta extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtEdicion;
@@ -37,7 +37,7 @@ public class VentanaAñadirCarta extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaAñadirCarta frame = new VentanaAñadirCarta();
+					VentanaAnyadirCarta frame = new VentanaAnyadirCarta();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +49,7 @@ public class VentanaAñadirCarta extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaAñadirCarta() {
+	public VentanaAnyadirCarta() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -60,7 +60,7 @@ public class VentanaAñadirCarta extends JFrame {
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.NORTH);
 
-		JLabel lblAadirelimonarCarta = new JLabel("Añadir Carta");
+		JLabel lblAadirelimonarCarta = new JLabel("Anyadir Carta");
 		panel.add(lblAadirelimonarCarta);
 
 		JPanel panel_2 = new JPanel();
@@ -209,10 +209,10 @@ public class VentanaAñadirCarta extends JFrame {
 		contentPane.add(panel_1, BorderLayout.SOUTH);
 		JFrame ventana = this;
 
-		JButton btnAadir = new JButton("Añadir");
+		JButton btnAadir = new JButton("Anyadir");
 		btnAadir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Añade la carta a la bd
+				// Anyade la carta a la bd
 
 				if (txtNombre.getText().equals("") || txtEdicion.getText().equals("") || txtRareza.getText().equals("")
 						|| txtPrecio.getText().equals("") || txtReferencia.getText().equals("")
@@ -233,7 +233,7 @@ public class VentanaAñadirCarta extends JFrame {
 							BD.registrarCarta(txtNombre.getText(), txtEdicion.getText(), txtRareza.getText(),
 									txtPrecio.getText(), txtReferencia.getText(), txtRuta.getText(),
 									txtStock.getText());
-							JOptionPane.showMessageDialog(null, "Carta Añadida a la BD", "Exito",
+							JOptionPane.showMessageDialog(null, "Carta Anyadida a la BD", "Exito",
 									JOptionPane.INFORMATION_MESSAGE);
 							ventana.setVisible(false);
 							VentanaPrincipalAdmin vl = new VentanaPrincipalAdmin();

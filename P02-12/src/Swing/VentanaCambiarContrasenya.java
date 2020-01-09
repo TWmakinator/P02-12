@@ -19,11 +19,11 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
 
-public class VentanaCambiarContraseña extends JFrame {
+public class VentanaCambiarContrasenya extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtNombre;
-	private JTextField txtNuevaContraseña;
+	private JTextField txtNuevaContrasenya;
 
 	/**
 	 * Launch the application.
@@ -32,7 +32,7 @@ public class VentanaCambiarContraseña extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaCambiarContraseña frame = new VentanaCambiarContraseña();
+					VentanaCambiarContrasenya frame = new VentanaCambiarContrasenya();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +44,7 @@ public class VentanaCambiarContraseña extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaCambiarContraseña() {
+	public VentanaCambiarContrasenya() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 165);
@@ -57,8 +57,8 @@ public class VentanaCambiarContraseña extends JFrame {
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.NORTH);
 
-		JLabel lblCambiarContraseñaUsuario = new JLabel("Cambiar Contraseña Usuario");
-		panel.add(lblCambiarContraseñaUsuario);
+		JLabel lblCambiarContrasenyaUsuario = new JLabel("Cambiar Contrasenya Usuario");
+		panel.add(lblCambiarContrasenyaUsuario);
 
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.CENTER);
@@ -86,7 +86,7 @@ public class VentanaCambiarContraseña extends JFrame {
 		panel_1.add(txtNombre, gbc_txtNombre);
 		txtNombre.setColumns(10);
 
-		JLabel lblNuevaContrasea = new JLabel("Nueva Contraseña:");
+		JLabel lblNuevaContrasea = new JLabel("Nueva Contrasenya:");
 		GridBagConstraints gbc_lblNuevaContrasea = new GridBagConstraints();
 		gbc_lblNuevaContrasea.insets = new Insets(0, 0, 0, 5);
 		gbc_lblNuevaContrasea.anchor = GridBagConstraints.WEST;
@@ -94,14 +94,14 @@ public class VentanaCambiarContraseña extends JFrame {
 		gbc_lblNuevaContrasea.gridy = 3;
 		panel_1.add(lblNuevaContrasea, gbc_lblNuevaContrasea);
 
-		txtNuevaContraseña = new JTextField();
-		GridBagConstraints gbc_txtNuevaContraseña = new GridBagConstraints();
-		gbc_txtNuevaContraseña.insets = new Insets(0, 0, 0, 5);
-		gbc_txtNuevaContraseña.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtNuevaContraseña.gridx = 4;
-		gbc_txtNuevaContraseña.gridy = 3;
-		panel_1.add(txtNuevaContraseña, gbc_txtNuevaContraseña);
-		txtNuevaContraseña.setColumns(10);
+		txtNuevaContrasenya = new JTextField();
+		GridBagConstraints gbc_txtNuevaContrasenya = new GridBagConstraints();
+		gbc_txtNuevaContrasenya.insets = new Insets(0, 0, 0, 5);
+		gbc_txtNuevaContrasenya.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtNuevaContrasenya.gridx = 4;
+		gbc_txtNuevaContrasenya.gridy = 3;
+		panel_1.add(txtNuevaContrasenya, gbc_txtNuevaContrasenya);
+		txtNuevaContrasenya.setColumns(10);
 
 		JPanel panel_2 = new JPanel();
 		contentPane.add(panel_2, BorderLayout.SOUTH);
@@ -109,7 +109,7 @@ public class VentanaCambiarContraseña extends JFrame {
 		JButton btnCambiar = new JButton("Cambiar");
 		btnCambiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (txtNombre.getText().equals("") || txtNuevaContraseña.getText().equals("")) {
+				if (txtNombre.getText().equals("") || txtNuevaContrasenya.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Hay que rellenar todos los campos", "ERROR",
 							JOptionPane.ERROR_MESSAGE);
 
@@ -118,7 +118,7 @@ public class VentanaCambiarContraseña extends JFrame {
 
 						int resultado = BD.buscarNombreUsuario(txtNombre.getText());
 						if (resultado != 0) {
-							BD.cambiarContraseñaUsuario(txtNombre.getText(), txtNuevaContraseña.getText());
+							BD.cambiarContrasenyaUsuario(txtNombre.getText(), txtNuevaContrasenya.getText());
 							ventana.setVisible(false);
 							VentanaPrincipalAdmin vp = new VentanaPrincipalAdmin();
 							vp.setVisible(true);

@@ -81,10 +81,10 @@ public class VentanaPrincipalAdmin extends JFrame {
 		gbl_panel_2.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
 		panel_2.setLayout(gbl_panel_2);
 
-		JButton btnNewButton_1 = new JButton("Añadir Carta BD");
+		JButton btnNewButton_1 = new JButton("Anyadir Carta BD");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaAñadirCarta vn = new VentanaAñadirCarta();
+				VentanaAnyadirCarta vn = new VentanaAnyadirCarta();
 				vn.setVisible(true);
 				ventana.setVisible(false);
 
@@ -134,7 +134,7 @@ public class VentanaPrincipalAdmin extends JFrame {
 		JButton btnNewButton_3 = new JButton("Cambiar Clave Usuario");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VentanaCambiarContraseña vc = new VentanaCambiarContraseña();
+				VentanaCambiarContrasenya vc = new VentanaCambiarContrasenya();
 				vc.setVisible(true);
 				ventana.setVisible(false);
 			}

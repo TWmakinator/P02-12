@@ -74,18 +74,7 @@ public class VentanaCambiarNombreUsuario extends JFrame {
 				} else {
 					try {
 
-						int resultado = BD.buscarNombreUsuario(txtNombre.getText()); // si
-																						// no
-																						// tira,
-																						// Crar
-																						// otro
-																						// metodo
-																						// que
-																						// no
-																						// le
-																						// pasemos
-																						// el
-																						// pass
+						int resultado = BD.buscarNombreUsuario(txtNombre.getText());
 						if (resultado != 0) {
 							BD.cambiarNombreUsuario(txtNombre.getText(), txtNuevoNombre.getText());
 							JOptionPane.showMessageDialog(null, "El Nombre del Usuario ya ha sido Modificado",
