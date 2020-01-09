@@ -198,8 +198,9 @@ public class BD {
 	}
 
 	public static void registrarUsuario(String nick, String email, String contrasenya) {
-		log.log(Level.INFO, " Nuevo usuario registrado en BD: " + (new Date()));
 		Connection con = BD.initBD("BaseDeDatos.db");
+		log.log(Level.INFO, " Nuevo usuario registrado en BD: " + (new Date()));
+		
 		Statement st = BD.usarBD(con);
 		String sql = "INSERT INTO usuario VALUES('" + nick + "','" + email + "','" + contrasenya + "')";
 		try {
@@ -214,8 +215,9 @@ public class BD {
 
 	public static void registrarCarta(String nombre, String edicion, String rareza, String precio, String ruta,
 			String referencia, String stock) {
-		log.log(Level.INFO, " Carta añadida a BD: " + (new Date()));
 		Connection con = BD.initBD("BaseDeDatos.db");
+		log.log(Level.INFO, " Carta añadida a BD: " + (new Date()));
+		
 		Statement st = BD.usarBD(con);
 		String sql = "INSERT INTO Cartas VALUES('" + nombre + "','" + edicion + "','" + rareza + "','" + precio + "','"
 				+ ruta + "','" + referencia + "','" + stock + "')";
@@ -230,8 +232,9 @@ public class BD {
 	}
 
 	public static void eliminarCarta(String nombre) {
-		log.log(Level.INFO, " Carta eliminada de BD: " + (new Date()));
 		Connection con = BD.initBD("BaseDeDatos.db");
+		log.log(Level.INFO, " Carta eliminada de BD: " + (new Date()));
+		
 		Statement st = BD.usarBD(con);
 		String sql = "DELETE FROM Cartas WHERE Nombre ='" + nombre + "'";
 		try {
@@ -245,8 +248,9 @@ public class BD {
 	}
 
 	public static void cambiarNombreUsuario(String nombre, String nuevoNombre) {
-		log.log(Level.INFO, " Nombre de usuario actualizado: " + (new Date()));
 		Connection con = BD.initBD("BaseDeDatos.db");
+		log.log(Level.INFO, " Nombre de usuario actualizado: " + (new Date()));
+		
 		Statement st = BD.usarBD(con);
 		String sql = "UPDATE usuario SET Nick ='" + nuevoNombre + "' WHERE Nick ='" + nombre + "'";
 		try {
@@ -260,8 +264,9 @@ public class BD {
 	}
 
 	public static void cambiarContrasenyaUsuario(String nombre, String nuevaContrasenya) {		
-		log.log(Level.INFO, " Contrasenya cargada: " + (new Date()));
 		Connection con = BD.initBD("BaseDeDatos.db");
+		log.log(Level.INFO, " Contrasenya cargada: " + (new Date()));
+		
 		Statement st = BD.usarBD(con);
 		String sql = "UPDATE usuario SET Clave ='" + nuevaContrasenya + "' WHERE Nick ='" + nombre + "'";
 		try {
@@ -275,10 +280,10 @@ public class BD {
 	}
 
 	public static void anyadirStock(String nombre, String edicion, String stock) {	
-		log.log(Level.INFO, " Stock añadido: " + (new Date()));
 		String sql = "UPDATE Cartas SET (Stock = ?) WHERE (Nombre = ?, Edicion = ?)";
 		Connection con = BD.initBD("BaseDeDatos.db");
-
+		log.log(Level.INFO, " Stock añadido: " + (new Date()));
+		
 		try {
 			PreparedStatement stmt = con.prepareStatement(sql);
 			// las interrogaciones (la primera mete el stmt 1), etc
@@ -346,10 +351,11 @@ public class BD {
 	}
 
 	public static ArrayList<String> obtenerRutasFotos(Carta c){
-		log.log(Level.INFO, " Todas las rutas obtenidas: " + (new Date()));
 		ArrayList<String> rutas = new ArrayList<String>();
 		String sql = "SELECT ruta FROM Cartas WHERE Nombre='"+c.getNombreCarta()+"' AND Rareza='"+c.getRareza()+"' AND Precio='"+c.getPrecio()+"'";
 		Connection con = BD.initBD("BaseDeDatos.db");
+		log.log(Level.INFO, " Todas las rutas obtenidas: " + (new Date()));
+		
 		Statement st = BD.usarBD(con);
 		try {
 			ResultSet rs = st.executeQuery(sql);
@@ -411,9 +417,10 @@ public class BD {
 	}
 	
 	public static Carta obtenerDatosCarta(String ruta) {
-		log.log(Level.INFO, " Datos de la carta obtenidos desde BD: " + (new Date()));
 		String sql = "SELECT * FROM Cartas WHERE Ruta='"+ruta+"'";
 		Connection con = BD.initBD("BaseDeDatos.db");
+		log.log(Level.INFO, " Datos de la carta obtenidos desde BD: " + (new Date()));
+		
 		Statement st = BD.usarBD(con);
 		ResultSet rs;
 		Carta c=null;
@@ -437,9 +444,10 @@ public class BD {
 	
 	
 	public static float obtenerPrecioCarta(String ruta) {
-		log.log(Level.INFO, " Precio de carta obtenido: " + (new Date()));
 		String sql = "SELECT Precio FROM Cartas WHERE Ruta='" + ruta + "'";
 		Connection con = BD.initBD("BaseDeDatos.db");
+		log.log(Level.INFO, " Precio de carta obtenido: " + (new Date()));
+		
 		Statement st = BD.usarBD(con);
 		float precio = 0;
 		try {
@@ -458,9 +466,10 @@ public class BD {
 	}
 
 	public static String obtenerRutaFoto(int referencia) {
-		log.log(Level.INFO, " Ruta de carta obtenida desde BD: " + (new Date()));
 		String sql = "SELECT Ruta FROM Cartas WHERE Referencia=" + referencia;
 		Connection con = BD.initBD("BaseDeDatos.db");
+		log.log(Level.INFO, " Ruta de carta obtenida desde BD: " + (new Date()));
+		
 		Statement st = BD.usarBD(con);
 		String ruta = "";
 		try {
@@ -477,9 +486,10 @@ public class BD {
 	}
 
 	public static String obtenerNombreCarta(String ruta) {
-		log.log(Level.INFO, " Obtenido nombre de carta desde BD: " + (new Date()));
 		String sql = "SELECT Nombre FROM Cartas WHERE Ruta='" + ruta + "'";
 		Connection con = BD.initBD("BaseDeDatos.db");
+		log.log(Level.INFO, " Obtenido nombre de carta desde BD: " + (new Date()));
+		
 		Statement st = BD.usarBD(con);
 		String nombre = "";
 		try {
@@ -498,9 +508,10 @@ public class BD {
 	}
 
 	public static String obtenerRarezaCarta(String ruta) {
-		log.log(Level.INFO, " Obtenida rareza de carta desde BD: " + (new Date()));
 		String sql = "SELECT Rareza FROM Cartas WHERE Ruta='" + ruta + "'";
 		Connection con = BD.initBD("BaseDeDatos.db");
+		log.log(Level.INFO, " Obtenida rareza de carta desde BD: " + (new Date()));
+		
 		Statement st = BD.usarBD(con);
 		String rareza = "";
 		try {
