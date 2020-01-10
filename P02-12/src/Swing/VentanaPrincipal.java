@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Logica.PanelFotos;
+import Logica.PanelInfoFoto;
 
 import java.awt.GridBagLayout;
 import java.util.Date;
@@ -29,6 +30,8 @@ import java.awt.Insets;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.ActionEvent;
 
 public class VentanaPrincipal extends JFrame {
@@ -44,7 +47,7 @@ public class VentanaPrincipal extends JFrame {
 			log = Logger.getLogger("LoggerEjecucion");
 		} catch (Exception e) {
 		}
-		log.log(Level.INFO, " Inicio de la ventana principal: " + (new Date()));
+		log.log(Level.INFO, " Inicio de la ventana principal" + (new Date()));
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -63,7 +66,7 @@ public class VentanaPrincipal extends JFrame {
 	 */
 	public VentanaPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1200, 900); // 100,100,1200,900
+		setBounds(100, 100, 1200, 900); 
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -120,7 +123,45 @@ public class VentanaPrincipal extends JFrame {
 
 		JPanel panelCentro = new PanelFotos();
 		JScrollPane scroll = new JScrollPane(panelCentro);
+		
 		contentPane.add(scroll, BorderLayout.CENTER);
+		panelCentro.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent e) {			
+				PanelFotos pf = (PanelFotos)e.getComponent();
+				int x = e.getX();
+				int y = e.getY();
+				PanelInfoFoto pi = (PanelInfoFoto)pf.getComponentAt(x, y);
+				VentanaCarta vc = new VentanaCarta(pi.getRuta(), ventana);
+				vc.setVisible(true);
+				ventana.dispose();
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 
 		JPanel panelSur = new JPanel();
 		contentPane.add(panelSur, BorderLayout.SOUTH);
@@ -129,8 +170,8 @@ public class VentanaPrincipal extends JFrame {
 		btnCerrarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ventana.setVisible(false);
-				VentanaLogin va = new VentanaLogin();
-				va.setVisible(true);
+				VentanaLogin vl = new VentanaLogin();
+				vl.setVisible(true);
 				log.log(Level.INFO, "Cerrando la sesion actual" + (new Date()));
 			}
 		});
