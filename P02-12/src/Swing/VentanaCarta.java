@@ -7,6 +7,9 @@ import java.awt.Window;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Logica.BD;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -30,7 +33,7 @@ public class VentanaCarta extends JFrame {
 	public VentanaCarta(String ruta, JFrame va) {
 		this.va = va;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 500, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -48,9 +51,8 @@ public class VentanaCarta extends JFrame {
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {			
-				va.setVisible(false);
-				VentanaPrincipal vp = new VentanaPrincipal();
-				vp.setVisible(true);
+				dispose();
+
 			}
 		});
 		panel_2.add(btnVolver);
@@ -66,18 +68,21 @@ public class VentanaCarta extends JFrame {
 		contentPane.add(panel_3, BorderLayout.EAST);
 		panel_3.setLayout(new MigLayout("", "[53.00px][105.00]", "[10][][25][pref!][25][pref!][25][pref!]"));
 		
-		JLabel lblNombre = new JLabel("Nombre");
+		JLabel lblNombre = new JLabel("Nombre:");
 		panel_3.add(lblNombre, "cell 0 1,alignx left,aligny top");
 		
-		JLabel lblNomc = new JLabel("NomC");
+		String nombreCarta = BD.obtenerNombreCarta(ruta);
+		JLabel lblNomc = new JLabel(nombreCarta);
 		panel_3.add(lblNomc, "cell 1 1,alignx center");
 		
 		JLabel label_2 = new JLabel(" ");
 		panel_3.add(label_2, "cell 0 2");
 		
+		
 		JLabel lblEdicion = new JLabel("Edicion:");
 		panel_3.add(lblEdicion, "cell 0 3,alignx left,aligny top");
 		
+		//String edicionCarta = BD.(ruta);  falta metodo obtener edicion carta
 		JLabel lblEdic = new JLabel("EdiC");
 		panel_3.add(lblEdic, "cell 1 3,alignx center");
 		
@@ -87,7 +92,8 @@ public class VentanaCarta extends JFrame {
 		JLabel lblRareza = new JLabel("Rareza:");
 		panel_3.add(lblRareza, "cell 0 5");
 		
-		JLabel lblRarec = new JLabel("RareC");
+		String RarezaCarta = BD.obtenerRarezaCarta(ruta);
+		JLabel lblRarec = new JLabel(RarezaCarta);
 		panel_3.add(lblRarec, "cell 1 5,alignx center");
 		
 		JLabel label = new JLabel(" ");
@@ -96,13 +102,18 @@ public class VentanaCarta extends JFrame {
 		JLabel lblPrecio = new JLabel("Precio:");
 		panel_3.add(lblPrecio, "cell 0 7");
 		
-		JLabel lblPrec = new JLabel("PreC");
+		float precioCarta = BD.obtenerPrecioCarta(ruta);
+		String precioCartaS = String.valueOf(precioCarta);
+		JLabel lblPrec = new JLabel(precioCartaS+"€");
 		panel_3.add(lblPrec, "cell 1 7,alignx center");
 		
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.CENTER);
+		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JPanel panelFotet = new JPanel();
+		ImageIcon im = new ImageIcon(ruta);
+		JLabel lblFotoCarta = new JLabel(im);
+		panel_1.add(lblFotoCarta);
 	
 	}
 

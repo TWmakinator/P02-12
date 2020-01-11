@@ -134,7 +134,6 @@ public class VentanaPrincipal extends JFrame {
 				PanelInfoFoto pi = (PanelInfoFoto)pf.getComponentAt(x, y);
 				VentanaCarta vc = new VentanaCarta(pi.getRuta(), ventana);
 				vc.setVisible(true);
-				ventana.dispose();
 			}
 
 			@Override

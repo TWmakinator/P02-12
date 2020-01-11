@@ -42,6 +42,7 @@ public class PanelInfoFoto extends JPanel {
 		ImageIcon im = new ImageIcon(ruta);
 		im.setDescription(ruta);
 		JLabel lblfoto = new JLabel(im);
+		
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.gridx = 2; // En qué columna empieza
 		constraints.gridy = 0; // En qué fila empieza
@@ -56,13 +57,6 @@ public class PanelInfoFoto extends JPanel {
 		constraints.gridwidth = 3; // Cuántas columnas ocupa
 		constraints.gridheight = 1; // Cuántas filas ocupa
 		add(lblNombreCarta, constraints);
-
-		JLabel lblRareza = new JLabel(c.getRareza());
-		constraints.gridx = 4; // En qué columna empieza
-		constraints.gridy = 7; // En qué fila empieza
-		constraints.gridwidth = 3; // Cuántas columnas ocupa
-		constraints.gridheight = 1; // Cuántas filas ocupa
-		add(lblRareza, constraints);
 
 		JLabel lblPrecio = new JLabel(String.valueOf(c.getPrecio()));
 		constraints.gridx = 4; // En qué columna empieza

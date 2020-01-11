@@ -70,7 +70,7 @@ public class BD {
 			statement.setQueryTimeout(30); // poner timeout 30 msg
 			try {
 				statement.executeUpdate(
-						"create table usuario " + "(nick string, contraseña string, email string, NumeroCuenta int)");
+						"create table usuario " + "(nick string, contraseña string, email string)");
 			} catch (SQLException e) {
 			} // Tabla ya existe. Nada que hacer
 			return statement;
@@ -197,12 +197,12 @@ public class BD {
 
 	}
 
-	public static void registrarUsuario(String nick, String email, String contrasenya) {
+	public static void registrarUsuario(String nick, String contrasenya, String email) {
 		Connection con = BD.initBD("BaseDeDatos.db");
 		log.log(Level.INFO, " Nuevo usuario registrado en BD: " + (new Date()));
 		
 		Statement st = BD.usarBD(con);
-		String sql = "INSERT INTO usuario VALUES('" + nick + "','" + email + "','" + contrasenya + "')";
+		String sql = "INSERT INTO usuario VALUES('" + nick + "','" + contrasenya + "','" + email + "')";
 		try {
 			st.executeUpdate(sql);
 			

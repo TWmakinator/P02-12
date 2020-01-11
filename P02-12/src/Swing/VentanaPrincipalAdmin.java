@@ -1,12 +1,14 @@
 package Swing;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
@@ -17,6 +19,8 @@ import java.awt.Window;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class VentanaPrincipalAdmin extends JFrame {
 
@@ -48,19 +52,28 @@ public class VentanaPrincipalAdmin extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.setLayout(null);
 
 		JPanel panel = new JPanel();
-		contentPane.add(panel, BorderLayout.NORTH);
+		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
+		panel.setBounds(5, 5, 424, 24);
+		contentPane.add(panel);
+		panel.setBackground(new Color(0,0,0,0));
 
 		JLabel lblVentanaadmin = new JLabel("VentanaAdmin");
+		lblVentanaadmin.setHorizontalAlignment(SwingConstants.CENTER);
+		lblVentanaadmin.setForeground(Color.WHITE);
+		lblVentanaadmin.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 16));
 		panel.add(lblVentanaadmin);
 
 		JPanel panel_1 = new JPanel();
-		contentPane.add(panel_1, BorderLayout.SOUTH);
-		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-
+		panel_1.setBounds(5, 223, 424, 33);
+		contentPane.add(panel_1);
+		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));	
+		panel_1.setBackground(new Color(0,0,0,0));
+		
 		JFrame ventana = this;
+		
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -73,7 +86,9 @@ public class VentanaPrincipalAdmin extends JFrame {
 		panel_1.add(btnVolver);
 
 		JPanel panel_2 = new JPanel();
-		contentPane.add(panel_2, BorderLayout.CENTER);
+		panel_2.setBounds(5, 29, 424, 194);
+		contentPane.add(panel_2);
+		panel_2.setBackground(new Color(0,0,0,0));
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
 		gbl_panel_2.columnWidths = new int[] { 200, 0, 202, 0 };
 		gbl_panel_2.rowHeights = new int[] { 30, 30, 29, 29, 29, 30, 50 };
@@ -146,6 +161,10 @@ public class VentanaPrincipalAdmin extends JFrame {
 		gbc_btnNewButton_3.gridx = 1;
 		gbc_btnNewButton_3.gridy = 5;
 		panel_2.add(btnNewButton_3, gbc_btnNewButton_3);
+		
+		JLabel lblNewLabel = new JLabel(new ImageIcon(VentanaPrincipalAdmin.class.getResource("/FotosFondo/Fondo4.jpg")));
+		lblNewLabel.setBounds(5, 5, 424, 251);
+		contentPane.add(lblNewLabel);
 	}
 
 }
