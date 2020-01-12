@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Logica.InterfaceReloj;
 import Logica.PanelFotos;
 import Logica.PanelInfoFoto;
 
@@ -32,13 +33,15 @@ import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.time.format.DateTimeFormatter;
 import java.awt.event.ActionEvent;
 
 public class VentanaPrincipal extends JFrame {
 
 	static Logger log;
 	private JPanel contentPane;
-
+	private InterfaceReloj ireloj;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -65,6 +68,7 @@ public class VentanaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaPrincipal() {
+		ireloj = new InterfaceReloj();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1200, 900); 
 		contentPane = new JPanel();
@@ -78,9 +82,9 @@ public class VentanaPrincipal extends JFrame {
 		panelNorte.setForeground(Color.DARK_GRAY);
 		contentPane.add(panelNorte, BorderLayout.NORTH);
 		GridBagLayout gbl_panelNorte = new GridBagLayout();
-		gbl_panelNorte.columnWidths = new int[] { 76, 104, 871, 119, 0 };
+		gbl_panelNorte.columnWidths = new int[] { 76, 104, 666, 202, 119, 0 };
 		gbl_panelNorte.rowHeights = new int[] { 37, 0 };
-		gbl_panelNorte.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panelNorte.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		gbl_panelNorte.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 		panelNorte.setLayout(gbl_panelNorte);
 
@@ -112,12 +116,19 @@ public class VentanaPrincipal extends JFrame {
 		btnCarrito.setBackground(Color.WHITE);
 		btnCarrito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				log.log(Level.INFO, "Entrando al carrito" + (new Date()));
+				new VentanaCarrito();
 			}
 		});
+		
+		
+		GridBagConstraints gbc_lblReloj = new GridBagConstraints();
+		gbc_lblReloj.insets = new Insets(0, 0, 0, 5);
+		gbc_lblReloj.gridx = 3;
+		gbc_lblReloj.gridy = 0;
+		panelNorte.add(ireloj, gbc_lblReloj);
 		btnCarrito.setIcon(new ImageIcon("FotosExtra/Carrito.png"));
 		GridBagConstraints gbc_btnCarrito = new GridBagConstraints();
-		gbc_btnCarrito.gridx = 3;
+		gbc_btnCarrito.gridx = 4;
 		gbc_btnCarrito.gridy = 0;
 		panelNorte.add(btnCarrito, gbc_btnCarrito);
 
@@ -178,3 +189,5 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 }
+
+

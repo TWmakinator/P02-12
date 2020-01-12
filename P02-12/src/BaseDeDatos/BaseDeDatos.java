@@ -1,4 +1,4 @@
-package Logica;
+package BaseDeDatos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

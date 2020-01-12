@@ -1,4 +1,4 @@
-package Logica;
+package BaseDeDatos;
 
 import java.io.Closeable;
 import java.sql.*;
@@ -9,6 +9,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Parsed;
+
+import Logica.Carrito;
+import Logica.Carta;
 
 public class BD {
 	static Logger log;

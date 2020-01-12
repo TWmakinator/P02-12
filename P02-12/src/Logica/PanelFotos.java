@@ -3,6 +3,9 @@ package Logica;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import BaseDeDatos.BD;
+
 import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.Scrollbar;

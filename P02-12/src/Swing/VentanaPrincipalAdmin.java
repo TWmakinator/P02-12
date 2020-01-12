@@ -7,6 +7,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Logica.InterfaceReloj;
+
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -25,6 +28,7 @@ import javax.swing.SwingConstants;
 public class VentanaPrincipalAdmin extends JFrame {
 
 	private JPanel contentPane;
+	
 
 	/**
 	 * Launch the application.

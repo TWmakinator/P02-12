@@ -8,12 +8,17 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Logica.BD;
+import BaseDeDatos.BD;
+import Logica.Carta;
+import Logica.PanelFotos;
+import Logica.PanelInfoFoto;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
@@ -26,6 +31,7 @@ public class VentanaCarta extends JFrame {
 
 	private JPanel contentPane;
 	private JFrame va;
+	private VentanaPrincipal vp;
 
 	/**
 	 * Create the frame.
@@ -60,8 +66,11 @@ public class VentanaCarta extends JFrame {
 		JButton btnAnyadirCarrito = new JButton("Anyadir al Carrito");
 		btnAnyadirCarrito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				BD.aniadirProductoAlCarrito(VentanaLogin.getNick(), ruta, BD.obtenerNombreCarta(ruta), BD.obtenerEdicionCarta(ruta), BD.obtenerRarezaCarta(ruta), BD.obtenerPrecioCarta(ruta) );
+				JOptionPane.showMessageDialog(null, "La Carta se ha añadido al carro", "Añadido al Carro", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
+		
 		panel_2.add(btnAnyadirCarrito);
 		
 		JPanel panel_3 = new JPanel();

@@ -7,7 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Logica.BD;
+import BaseDeDatos.BD;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.JButton;
 import java.awt.Color;
@@ -52,6 +55,7 @@ public class VentanaLogin extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -140,9 +144,6 @@ public class VentanaLogin extends JFrame {
 
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// comprobara los datos nick y pass,
-				// si son correctos abre la ventana principal si no muestra un
-				// show dialog de error a la hora de inicia sesion.
 
 				int resultado = BD.buscarUsuario(txtNick.getText(), txtClave.getText());
 				if (resultado == 2) {
