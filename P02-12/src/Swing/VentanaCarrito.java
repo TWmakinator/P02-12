@@ -12,7 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 import BaseDeDatos.BD;
 import Logica.Carrito;
-import Logica.PanelCarrito;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

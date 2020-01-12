@@ -1,4 +1,4 @@
-package Logica;
+package Swing;
 
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
@@ -6,6 +6,7 @@ import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 
 import BaseDeDatos.BD;
+import Logica.Carta;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;

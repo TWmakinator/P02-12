@@ -10,8 +10,6 @@ import javax.swing.border.EmptyBorder;
 
 import BaseDeDatos.BD;
 import Logica.Carta;
-import Logica.PanelFotos;
-import Logica.PanelInfoFoto;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;

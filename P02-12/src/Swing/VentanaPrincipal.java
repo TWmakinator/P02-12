@@ -8,8 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Logica.InterfaceReloj;
-import Logica.PanelFotos;
-import Logica.PanelInfoFoto;
 
 import java.awt.GridBagLayout;
 import java.util.Date;
