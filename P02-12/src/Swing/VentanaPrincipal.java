@@ -94,6 +94,7 @@ public class VentanaPrincipal extends JFrame {
 		panelNorte.add(lblUsuarioX, gbc_lblUsuarioX);
 
 		JLabel lblNewLabel = new JLabel(VentanaLogin.getNick());
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.anchor = GridBagConstraints.WEST;
 		gbc_lblNewLabel.insets = new Insets(0, 0, 0, 5);
