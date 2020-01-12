@@ -17,12 +17,11 @@ public class BD {
 	static Logger log;
 	private static Exception lastError = null; // Información de último error
 												// SQL ocurrido
-	
+
 	/**
 	 * Inicializa una BD SQLITE y devuelve una conexión con ella
 	 * 
-	 * @param nombreBD
-	 *            Nombre de fichero de la base de datos
+	 * @param nombreBD Nombre de fichero de la base de datos
 	 * @return Conexión con la base de datos indicada. Si hay algún error, se
 	 *         devuelve null
 	 */
@@ -42,10 +41,9 @@ public class BD {
 	/**
 	 * Devuelve statement para usar la base de datos
 	 * 
-	 * @param con
-	 *            Conexión ya creada y abierta a la base de datos
-	 * @return sentencia de trabajo si se crea correctamente, null si hay
-	 *         cualquier error
+	 * @param con Conexión ya creada y abierta a la base de datos
+	 * @return sentencia de trabajo si se crea correctamente, null si hay cualquier
+	 *         error
 	 */
 	public static Statement usarBD(Connection con) {
 		try {
@@ -62,18 +60,16 @@ public class BD {
 	/**
 	 * Crea las tablas de la base de datos. Si ya existen, las deja tal cual
 	 * 
-	 * @param con
-	 *            Conexión ya creada y abierta a la base de datos
-	 * @return sentencia de trabajo si se crea correctamente, null si hay
-	 *         cualquier error
+	 * @param con Conexión ya creada y abierta a la base de datos
+	 * @return sentencia de trabajo si se crea correctamente, null si hay cualquier
+	 *         error
 	 */
 	public static Statement usarCrearTablasBD(Connection con) {
 		try {
 			Statement statement = con.createStatement();
 			statement.setQueryTimeout(30); // poner timeout 30 msg
 			try {
-				statement.executeUpdate(
-						"create table usuario " + "(nick string, contraseña string, email string)");
+				statement.executeUpdate("create table usuario " + "(nick string, contrasenya string, email string)");
 			} catch (SQLException e) {
 			} // Tabla ya existe. Nada que hacer
 			return statement;
@@ -85,13 +81,12 @@ public class BD {
 	}
 
 	/**
-	 * Reinicia en blanco las tablas de la base de datos. UTILIZAR ESTE MËTODO
-	 * CON PRECAUCIÓN. Borra todos los datos que hubiera ya en las tablas
+	 * Reinicia en blanco las tablas de la base de datos. UTILIZAR ESTE MËTODO CON
+	 * PRECAUCIÓN. Borra todos los datos que hubiera ya en las tablas
 	 * 
-	 * @param con
-	 *            Conexión ya creada y abierta a la base de datos
-	 * @return sentencia de trabajo si se borra correctamente, null si hay
-	 *         cualquier error
+	 * @param con Conexión ya creada y abierta a la base de datos
+	 * @return sentencia de trabajo si se borra correctamente, null si hay cualquier
+	 *         error
 	 */
 	public static Statement reiniciarBD(Connection con) {
 		try {
@@ -107,13 +102,10 @@ public class BD {
 	}
 
 	/**
-	 * Cierra la base de datos abierta y cierra el hilo de proceso de base de
-	 * datos
+	 * Cierra la base de datos abierta y cierra el hilo de proceso de base de datos
 	 * 
-	 * @param con
-	 *            Conexión abierta de la BD
-	 * @param st
-	 *            Sentencia abierta de la BD
+	 * @param con Conexión abierta de la BD
+	 * @param st  Sentencia abierta de la BD
 	 */
 	public static void cerrarBD(final Connection con, final Statement st) {
 		try {
@@ -150,7 +142,7 @@ public class BD {
 
 	public static int buscarUsuario(String nick, String contrasenya) {
 		int resultado = 0;
-		String query = "SELECT * FROM usuario WHERE Nick='" + nick + "'";
+		String query = "SELECT * FROM usuario WHERE nick='" + nick + "'";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
 		try {
@@ -177,7 +169,7 @@ public class BD {
 
 	public static int buscarNombreUsuario(String nick) {
 		int resultado = 0;
-		String query = "SELECT * FROM usuario WHERE Nick='" + nick + "'";
+		String query = "SELECT * FROM usuario WHERE nick='" + nick + "'";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
 		try {
@@ -203,12 +195,12 @@ public class BD {
 	public static void registrarUsuario(String nick, String contrasenya, String email) {
 		Connection con = BD.initBD("BaseDeDatos.db");
 		log.log(Level.INFO, " Nuevo usuario registrado en BD: " + (new Date()));
-		
+
 		Statement st = BD.usarBD(con);
 		String sql = "INSERT INTO usuario VALUES('" + nick + "','" + contrasenya + "','" + email + "')";
 		try {
 			st.executeUpdate(sql);
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -220,13 +212,13 @@ public class BD {
 			String referencia, String stock) {
 		Connection con = BD.initBD("BaseDeDatos.db");
 		log.log(Level.INFO, " Carta añadida a BD: " + (new Date()));
-		
+
 		Statement st = BD.usarBD(con);
 		String sql = "INSERT INTO Cartas VALUES('" + nombre + "','" + edicion + "','" + rareza + "','" + precio + "','"
 				+ ruta + "','" + referencia + "','" + stock + "')";
 		try {
 			st.executeUpdate(sql);
-	
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -237,12 +229,12 @@ public class BD {
 	public static void eliminarCarta(String nombre) {
 		Connection con = BD.initBD("BaseDeDatos.db");
 		log.log(Level.INFO, " Carta eliminada de BD: " + (new Date()));
-		
+
 		Statement st = BD.usarBD(con);
-		String sql = "DELETE FROM Cartas WHERE Nombre ='" + nombre + "'";
+		String sql = "DELETE FROM Cartas WHERE nombre ='" + nombre + "'";
 		try {
 			st.executeUpdate(sql);
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -253,12 +245,12 @@ public class BD {
 	public static void cambiarNombreUsuario(String nombre, String nuevoNombre) {
 		Connection con = BD.initBD("BaseDeDatos.db");
 		log.log(Level.INFO, " Nombre de usuario actualizado: " + (new Date()));
-		
+
 		Statement st = BD.usarBD(con);
-		String sql = "UPDATE usuario SET Nick ='" + nuevoNombre + "' WHERE Nick ='" + nombre + "'";
+		String sql = "UPDATE usuario SET nick ='" + nuevoNombre + "' WHERE nick ='" + nombre + "'";
 		try {
 			st.executeUpdate(sql);
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -266,15 +258,15 @@ public class BD {
 		cerrarBD(con, st);
 	}
 
-	public static void cambiarContrasenyaUsuario(String nombre, String nuevaContrasenya) {		
+	public static void cambiarContrasenyaUsuario(String nombre, String nuevaContrasenya) {
 		Connection con = BD.initBD("BaseDeDatos.db");
 		log.log(Level.INFO, " Contrasenya cargada: " + (new Date()));
-		
+
 		Statement st = BD.usarBD(con);
-		String sql = "UPDATE usuario SET Clave ='" + nuevaContrasenya + "' WHERE Nick ='" + nombre + "'";
+		String sql = "UPDATE usuario SET clave ='" + nuevaContrasenya + "' WHERE nick ='" + nombre + "'";
 		try {
 			st.executeUpdate(sql);
-	
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -284,7 +276,7 @@ public class BD {
 
 	public static int buscarCarta(String nombre) {
 		int resultado = 0;
-		String query = "SELECT * FROM Cartas WHERE Nombre='" + nombre + "'";
+		String query = "SELECT * FROM Cartas WHERE nombre='" + nombre + "'";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
 		try {
@@ -308,19 +300,19 @@ public class BD {
 	}
 
 	public static ArrayList<String> obtenerTodasRutasFotos() {
-		
+
 		ArrayList<String> rutas = new ArrayList<String>();
-		String sql = "SELECT Ruta FROM Cartas";
+		String sql = "SELECT ruta FROM Cartas";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
 		log.log(Level.INFO, "Todas las rutas obtenidas :" + (new Date()));
-		
+
 		try {
 			ResultSet rs = st.executeQuery(sql);
 			while (rs.next()) {
-				String r = rs.getString("Ruta");
-			//	System.out.println(r);
-		
+				String r = rs.getString("ruta");
+				// System.out.println(r);
+
 				rutas.add(r);
 			}
 			rs.close();
@@ -333,16 +325,17 @@ public class BD {
 
 	}
 
-	public static ArrayList<String> obtenerRutasFotos(Carta c){
+	public static ArrayList<String> obtenerRutasFotos(Carta c) {
 		ArrayList<String> rutas = new ArrayList<String>();
-		String sql = "SELECT ruta FROM Cartas WHERE Nombre='"+c.getNombreCarta()+"' AND Rareza='"+c.getRareza()+"' AND Precio='"+c.getPrecio()+"'";
+		String sql = "SELECT ruta FROM Cartas WHERE nombre='" + c.getNombreCarta() + "' AND rareza='" + c.getRareza()
+				+ "' AND precio='" + c.getPrecio() + "'";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		log.log(Level.INFO, " Todas las rutas obtenidas: " + (new Date()));
-		
+
 		Statement st = BD.usarBD(con);
 		try {
 			ResultSet rs = st.executeQuery(sql);
-			while(rs.next()) {
+			while (rs.next()) {
 				String r = rs.getString("ruta");
 				rutas.add(r);
 			}
@@ -353,48 +346,49 @@ public class BD {
 		}
 		cerrarBD(con, st);
 		return rutas;
-		}	
-	
+	}
+
 	public static Carta obtenerDatosCarta(String ruta) {
-		String sql = "SELECT * FROM Cartas WHERE Ruta='"+ruta+"'";
+		String sql = "SELECT * FROM Cartas WHERE ruta='" + ruta + "'";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		log.log(Level.INFO, " Datos de la carta obtenidos desde BD: " + (new Date()));
-		
+
 		Statement st = BD.usarBD(con);
 		ResultSet rs;
-		Carta c=null;
+		Carta c = null;
 		try {
 			rs = st.executeQuery(sql);
-			
-			if(rs.next()) {
-				c = new Carta(rs.getString("Nombre"), rs.getString("Rareza"), rs.getString("Edicion"), Float.parseFloat(rs.getString("Precio")));
+
+			if (rs.next()) {
+				c = new Carta(rs.getString("nombre"), rs.getString("rareza"), rs.getString("edicion"),
+						Float.parseFloat(rs.getString("precio")));
 			}
 			st.close();
 			con.close();
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		cerrarBD(con, st);
 		return c;
-		
+
 	}
-	
+
 	public static float obtenerPrecioCarta(String ruta) {
-		String sql = "SELECT Precio FROM Cartas WHERE Ruta='" + ruta + "'";
+		String sql = "SELECT precio FROM Cartas WHERE ruta='" + ruta + "'";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		log.log(Level.INFO, " Precio de carta obtenido: " + (new Date()));
-		
+
 		Statement st = BD.usarBD(con);
 		float precio = 0;
 		try {
 			ResultSet rs = st.executeQuery(sql);
 			if (rs.next()) {
-				precio = rs.getFloat("Precio");
+				precio = rs.getFloat("precio");
 			}
 			rs.close();
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -404,17 +398,17 @@ public class BD {
 	}
 
 	public static String obtenerRutaFoto(int referencia) {
-		String sql = "SELECT Ruta FROM Cartas WHERE Referencia=" + referencia;
+		String sql = "SELECT ruta FROM Cartas WHERE referencia=" + referencia;
 		Connection con = BD.initBD("BaseDeDatos.db");
 		log.log(Level.INFO, " Ruta de carta obtenida desde BD: " + (new Date()));
-		
+
 		Statement st = BD.usarBD(con);
 		String ruta = "";
 		try {
 			ResultSet rs = st.executeQuery(sql);
 			if (rs.next())
-				ruta = rs.getString("Ruta");
-			
+				ruta = rs.getString("ruta");
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -424,17 +418,17 @@ public class BD {
 	}
 
 	public static String obtenerNombreCarta(String ruta) {
-		String sql = "SELECT Nombre FROM Cartas WHERE Ruta='" + ruta + "'";
+		String sql = "SELECT nombre FROM Cartas WHERE ruta='" + ruta + "'";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		log.log(Level.INFO, " Obtenido nombre de carta desde BD: " + (new Date()));
-		
+
 		Statement st = BD.usarBD(con);
 		String nombre = "";
 		try {
 			ResultSet rs = st.executeQuery(sql);
 			if (rs.next()) {
-				nombre = rs.getString("Nombre");
-				
+				nombre = rs.getString("nombre");
+
 			}
 			rs.close();
 		} catch (SQLException e) {
@@ -444,19 +438,19 @@ public class BD {
 		cerrarBD(con, st);
 		return nombre;
 	}
-	
+
 	public static String obtenerEdicionCarta(String ruta) {
-		String sql = "SELECT Edicion FROM Cartas WHERE Ruta='" + ruta + "'";
+		String sql = "SELECT edicion FROM Cartas WHERE ruta='" + ruta + "'";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		log.log(Level.INFO, " Obtenida la Edicion de la carta desde BD: " + (new Date()));
-		
+
 		Statement st = BD.usarBD(con);
 		String nombre = "";
 		try {
 			ResultSet rs = st.executeQuery(sql);
 			if (rs.next()) {
-				nombre = rs.getString("Edicion");
-				
+				nombre = rs.getString("edicion");
+
 			}
 			rs.close();
 		} catch (SQLException e) {
@@ -468,17 +462,17 @@ public class BD {
 	}
 
 	public static String obtenerRarezaCarta(String ruta) {
-		String sql = "SELECT Rareza FROM Cartas WHERE Ruta='" + ruta + "'";
+		String sql = "SELECT rareza FROM Cartas WHERE ruta='" + ruta + "'";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		log.log(Level.INFO, " Obtenida rareza de carta desde BD: " + (new Date()));
-		
+
 		Statement st = BD.usarBD(con);
 		String rareza = "";
 		try {
 			ResultSet rs = st.executeQuery(sql);
 			if (rs.next()) {
-				rareza = rs.getString("Rareza");
-				
+				rareza = rs.getString("rareza");
+
 			}
 			rs.close();
 		} catch (SQLException e) {
@@ -488,79 +482,88 @@ public class BD {
 		cerrarBD(con, st);
 		return rareza;
 	}
-	
-	public static void aniadirProductoAlCarrito(String nick, String ruta, String nombre, String edicion, String rareza, float precio) {
+
+	public static void aniadirProductoAlCarrito(String nick, String ruta, String nombre, String edicion, String rareza,
+			float precio) {
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
 		Date d = new Date(System.currentTimeMillis());
-		String sql = "SELECT referencia FROM Cartas WHERE Ruta='"+ruta+"' AND Nombre='"+nombre+"' AND Rareza='"+ rareza+ "' AND Edicion='"+edicion+"'";
+		String sql = "SELECT referencia FROM Cartas WHERE ruta='" + ruta + "' AND nombre='" + nombre + "' AND rareza='"
+				+ rareza + "' AND edicion='" + edicion + "'";
 		try {
 			ResultSet rs = st.executeQuery(sql);
 			int ref = rs.getInt("referencia");
 			rs.close();
-			sql = "SELECT * FROM Carrito WHERE referencia ="+ref;
+			sql = "SELECT * FROM Carrito WHERE referencia =" + ref;
 			rs = st.executeQuery(sql);
-			if(rs.next()) {
-				sql = "UPDATE Carrito SET unidades = unidades + 1 WHERE referencia = "+ref;
+			if (rs.next()) {
+				sql = "UPDATE Carrito SET unidades = unidades + 1 WHERE referencia = " + ref;
 				st.executeUpdate(sql);
-			}else {
+			} else {
 				String fecha = d.toString();
-				sql = "INSERT INTO Carrito VALUES('"+nick+"',"+ref+",'"+fecha+"',1,"+precio+")";
+				sql = "INSERT INTO Carrito VALUES('" + nick + "'," + ref + ",'" + fecha + "',1," + precio + ")";
 				st.executeUpdate(sql);
 			}
-			sql = "UPDATE Cartas SET Stock = Stock - 1 WHERE referencia = "+ref;
+			sql = "UPDATE Cartas SET stock = stock - 1 WHERE referencia = " + ref;
 			st.executeUpdate(sql);
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		cerrarBD(con, st);
-		
+
 	}
-	
-	public static ArrayList<Carrito> obtenerDatosCarrito(){
+
+	public static ArrayList<Carrito> obtenerDatosCarrito() {
 		String sql = "SELECT * FROM Carrito";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
-		ArrayList <Carrito> carrito = new ArrayList<Carrito>();
+
+		ArrayList<Carrito> carrito = new ArrayList<Carrito>();
+		carrito.clear();
 		try {
+
 			ResultSet rs = st.executeQuery(sql);
-			while(rs.next()) {
+			while (rs.next()) {
 				int ref = rs.getInt("referencia");
 				float precio = rs.getFloat("precio");
 				String nick = rs.getString("nick");
 				int unidades = rs.getInt("unidades");
 				String fecha = rs.getString("fecha");
 				carrito.add(new Carrito(ref, nick, unidades, precio, fecha));
+
 			}
+
 			rs.close();
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		cerrarBD(con, st);
 		return carrito;
 	}
 
 	public static int obtenerUnidadesProducto(int referencia) {
-		String sql = "SELECT Stock FROM Cartas WHERE Referencia="+referencia;
+		String sql = "SELECT stock FROM Cartas WHERE referencia=" + referencia;
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
 		int unidades = 0;
 		try {
 			ResultSet rs = st.executeQuery(sql);
-			if(rs.next())
-				unidades = rs.getInt("Stock");
+			if (rs.next())
+				unidades = rs.getInt("stock");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		cerrarBD(con, st);
-		return unidades;	
+		return unidades;
 	}
-	
+
 	public static void modificarUnidadesEnElCarrito(int referencia, int unidades) {
-		String sql = "UPDATE Cartas SET Stock = Stock-"+unidades;
+		String sql = "UPDATE Cartas SET stock = stock-" + unidades;
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
 		try {
@@ -568,7 +571,20 @@ public class BD {
 			cerrarBD(con, st);
 			con = BD.initBD("BaseDeDatos.db");
 			st = BD.usarBD(con);
-			sql = "UPDATE Carrito SET unidades = unidades+"+unidades;
+			sql = "UPDATE Carrito SET unidades = unidades+" + unidades;
+			st.executeUpdate(sql);
+			cerrarBD(con, st);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static void LimpiarCarrito() {
+		String sql = "DELETE FROM Carrito";
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		try {
 			st.executeUpdate(sql);
 			cerrarBD(con, st);
 		} catch (SQLException e) {

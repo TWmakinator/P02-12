@@ -20,7 +20,6 @@ import java.awt.event.ActionEvent;
 public class VentanaCarrito extends JFrame {
 
 	private JPanel contentPane;
-	
 
 	/**
 	 * Launch the application.
@@ -49,13 +48,13 @@ public class VentanaCarrito extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		JFrame ventana = this;
-		
+
 		JPanel pArriba = new JPanel();
 		contentPane.add(pArriba, BorderLayout.NORTH);
-		
+
 		JPanel pAbajo = new JPanel();
 		contentPane.add(pAbajo, BorderLayout.SOUTH);
-		
+
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -64,7 +63,7 @@ public class VentanaCarrito extends JFrame {
 			}
 		});
 		pAbajo.add(btnVolver);
-		
+
 		JButton btnComprar = new JButton("Comprar");
 		btnComprar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -73,25 +72,23 @@ public class VentanaCarrito extends JFrame {
 				vc.setVisible(true);
 			}
 		});
-		
+
 		pAbajo.add(btnComprar);
-		
-		
+
 		JPanel pCentral = new JPanel();
-		
 		pCentral.setLayout(new GridLayout(0, 1, 0, 0));
-		ArrayList<Carrito> carrito = BD.obtenerDatosCarrito();
-		for(Carrito c: carrito) {
+		ArrayList<Carrito> carrito = new ArrayList<Carrito>();
+		carrito = BD.obtenerDatosCarrito();
+
+		for (Carrito c : carrito) {
 			String ruta = BD.obtenerRutaFoto(c.getReferencia());
-			PanelCarrito pc =  new PanelCarrito(ruta, c.getUnidades(),c.getPrecio(),c.getReferencia());
+			PanelCarrito pc = new PanelCarrito(ruta, c.getUnidades(), c.getPrecio(), c.getReferencia());
 			pCentral.add(pc);
-			System.out.println(ruta);
+
 		}
 		JScrollPane scroll = new JScrollPane(pCentral);
 		contentPane.add(scroll, BorderLayout.CENTER);
 		setVisible(true);
 	}
-		
-		
-	}
 
+}

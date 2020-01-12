@@ -45,7 +45,7 @@ public class PanelInfoFoto extends JPanel {
 		ImageIcon im = new ImageIcon(ruta);
 		im.setDescription(ruta);
 		JLabel lblfoto = new JLabel(im);
-		
+
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.gridx = 2; // En qué columna empieza
 		constraints.gridy = 0; // En qué fila empieza

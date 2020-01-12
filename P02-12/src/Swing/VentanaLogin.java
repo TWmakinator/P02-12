@@ -55,7 +55,7 @@ public class VentanaLogin extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -87,7 +87,7 @@ public class VentanaLogin extends JFrame {
 
 		JPanel pArriba = new JPanel();
 		pArriba.setBounds(0, 5, 434, 36);
-		pArriba.setBackground(new Color(0,0,0,0));
+		pArriba.setBackground(new Color(0, 0, 0, 0));
 		contentPane.add(pArriba);
 
 		JLabel lblDeustogames = new JLabel("DeustoGames");
@@ -98,15 +98,14 @@ public class VentanaLogin extends JFrame {
 		JPanel pCentro = new JPanel();
 		pCentro.setBounds(0, 41, 434, 182);
 		contentPane.add(pCentro);
-		pCentro.setBackground(new Color(0,0,0,0));
+		pCentro.setBackground(new Color(0, 0, 0, 0));
 		pCentro.setLayout(new MigLayout("", "[50][110][170,grow][50]", "[30][51.00][42.00][30]"));
 
 		JPanel pAbajo = new JPanel();
 		pAbajo.setBounds(0, 223, 434, 38);
-		pAbajo.setBackground(new Color(0,0,0,0));
+		pAbajo.setBackground(new Color(0, 0, 0, 0));
 		contentPane.add(pAbajo);
-		
-		
+
 		JLabel lblNick = new JLabel("NICK :");
 		lblNick.setForeground(Color.WHITE);
 		lblNick.setFont(new Font("Arial", Font.BOLD, 12));
@@ -172,11 +171,10 @@ public class VentanaLogin extends JFrame {
 		btnAceptar.setForeground(Color.BLACK);
 		btnAceptar.setBackground(Color.WHITE);
 		pAbajo.add(btnAceptar);
-		
+
 		JLabel lblNewLabel = new JLabel(new ImageIcon(VentanaLogin.class.getResource("/FotosFondo/Fondo4.jpg")));
 		lblNewLabel.setBounds(0, 0, 434, 261);
 		contentPane.add(lblNewLabel);
- 
-		
+
 	}
 }

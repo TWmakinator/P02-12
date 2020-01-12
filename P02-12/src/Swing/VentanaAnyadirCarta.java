@@ -227,7 +227,6 @@ public class VentanaAnyadirCarta extends JFrame {
 							JOptionPane.showMessageDialog(null,
 									"Esta Carta ya existe, Se sumara al stock la cantidad indicada", "Atencion",
 									JOptionPane.WARNING_MESSAGE);
-							// Suma el stock indicado mas lo que teniamos
 
 						} else {
 							BD.registrarCarta(txtNombre.getText(), txtEdicion.getText(), txtRareza.getText(),

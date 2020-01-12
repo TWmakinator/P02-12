@@ -19,10 +19,10 @@ import java.awt.Color;
 public class PanelFotos extends JPanel {
 
 	private void cargarFotos() {
-		
+
 		ArrayList<String> rutas = BD.obtenerTodasRutasFotos();
-		
-		for(int i=0;i<rutas.size();i++) {
+
+		for (int i = 0; i < rutas.size(); i++) {
 			String ruta = rutas.get(i);
 			PanelInfoFoto p = new PanelInfoFoto(ruta);
 			add(p);
@@ -33,7 +33,7 @@ public class PanelFotos extends JPanel {
 	 * Crea el panel.
 	 */
 	public PanelFotos() {
-	
+
 		setOpaque(false);
 		setBackground(Color.WHITE);
 		setLayout(new GridLayout(0, 5, 0, 0));

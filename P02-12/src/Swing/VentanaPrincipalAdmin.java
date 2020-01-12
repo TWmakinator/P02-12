@@ -28,7 +28,6 @@ import javax.swing.SwingConstants;
 public class VentanaPrincipalAdmin extends JFrame {
 
 	private JPanel contentPane;
-	
 
 	/**
 	 * Launch the application.
@@ -62,7 +61,7 @@ public class VentanaPrincipalAdmin extends JFrame {
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		panel.setBounds(5, 5, 424, 24);
 		contentPane.add(panel);
-		panel.setBackground(new Color(0,0,0,0));
+		panel.setBackground(new Color(0, 0, 0, 0));
 
 		JLabel lblVentanaadmin = new JLabel("VentanaAdmin");
 		lblVentanaadmin.setHorizontalAlignment(SwingConstants.CENTER);
@@ -73,11 +72,11 @@ public class VentanaPrincipalAdmin extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(5, 223, 424, 33);
 		contentPane.add(panel_1);
-		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));	
-		panel_1.setBackground(new Color(0,0,0,0));
-		
+		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panel_1.setBackground(new Color(0, 0, 0, 0));
+
 		JFrame ventana = this;
-		
+
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -92,7 +91,7 @@ public class VentanaPrincipalAdmin extends JFrame {
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(5, 29, 424, 194);
 		contentPane.add(panel_2);
-		panel_2.setBackground(new Color(0,0,0,0));
+		panel_2.setBackground(new Color(0, 0, 0, 0));
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
 		gbl_panel_2.columnWidths = new int[] { 200, 0, 202, 0 };
 		gbl_panel_2.rowHeights = new int[] { 30, 30, 29, 29, 29, 30, 50 };
@@ -165,8 +164,9 @@ public class VentanaPrincipalAdmin extends JFrame {
 		gbc_btnNewButton_3.gridx = 1;
 		gbc_btnNewButton_3.gridy = 5;
 		panel_2.add(btnNewButton_3, gbc_btnNewButton_3);
-		
-		JLabel lblNewLabel = new JLabel(new ImageIcon(VentanaPrincipalAdmin.class.getResource("/FotosFondo/Fondo4.jpg")));
+
+		JLabel lblNewLabel = new JLabel(
+				new ImageIcon(VentanaPrincipalAdmin.class.getResource("/FotosFondo/Fondo4.jpg")));
 		lblNewLabel.setBounds(5, 5, 424, 251);
 		contentPane.add(lblNewLabel);
 	}

@@ -41,7 +41,7 @@ public class VentanaPrincipal extends JFrame {
 	static Logger log;
 	private JPanel contentPane;
 	private InterfaceReloj ireloj;
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -70,7 +70,7 @@ public class VentanaPrincipal extends JFrame {
 	public VentanaPrincipal() {
 		ireloj = new InterfaceReloj();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1200, 900); 
+		setBounds(100, 100, 1200, 900);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -119,8 +119,7 @@ public class VentanaPrincipal extends JFrame {
 				new VentanaCarrito();
 			}
 		});
-		
-		
+
 		GridBagConstraints gbc_lblReloj = new GridBagConstraints();
 		gbc_lblReloj.insets = new Insets(0, 0, 0, 5);
 		gbc_lblReloj.gridx = 3;
@@ -134,15 +133,15 @@ public class VentanaPrincipal extends JFrame {
 
 		JPanel panelCentro = new PanelFotos();
 		JScrollPane scroll = new JScrollPane(panelCentro);
-		
+
 		contentPane.add(scroll, BorderLayout.CENTER);
 		panelCentro.addMouseListener(new MouseListener() {
 			@Override
-			public void mouseClicked(MouseEvent e) {			
-				PanelFotos pf = (PanelFotos)e.getComponent();
+			public void mouseClicked(MouseEvent e) {
+				PanelFotos pf = (PanelFotos) e.getComponent();
 				int x = e.getX();
 				int y = e.getY();
-				PanelInfoFoto pi = (PanelInfoFoto)pf.getComponentAt(x, y);
+				PanelInfoFoto pi = (PanelInfoFoto) pf.getComponentAt(x, y);
 				VentanaCarta vc = new VentanaCarta(pi.getRuta(), ventana);
 				vc.setVisible(true);
 			}
@@ -150,27 +149,27 @@ public class VentanaPrincipal extends JFrame {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void mouseExited(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 		});
 
 		JPanel panelSur = new JPanel();
@@ -189,5 +188,3 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 }
-
-

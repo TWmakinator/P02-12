@@ -2,62 +2,49 @@ package Logica;
 
 public class Carta {
 
-	private String NombreCarta;
-	private String Rareza;
-	private String Edicion;
-	private double Precio;
-	
-	
-	
-	public Carta(String nombreCarta, String rareza, String Edicion, double precio) {
-		this.NombreCarta = nombreCarta;
-		this.Rareza = rareza;
-		this.Edicion = Edicion;
-		this.Precio = precio;
-		
-	}
+	private String nombreCarta;
+	private String rareza;
+	private String edicion;
+	private double precio;
 
+	public Carta(String nombreCarta, String rareza, String edicion, double precio) {
+		this.nombreCarta = nombreCarta;
+		this.rareza = rareza;
+		this.edicion = edicion;
+		this.precio = precio;
+
+	}
 
 	public String getNombreCarta() {
-		return NombreCarta;
+		return nombreCarta;
 	}
-
 
 	public void setNombreCarta(String nombreCarta) {
-		NombreCarta = nombreCarta;
+		this.nombreCarta = nombreCarta;
 	}
-
 
 	public String getRareza() {
-		return Rareza;
+		return rareza;
 	}
-
 
 	public void setRareza(String rareza) {
-		Rareza = rareza;
-	}
-	
-	public String getEdicion() {
-		return Edicion;
+		this.rareza = rareza;
 	}
 
+	public String getEdicion() {
+		return edicion;
+	}
 
 	public void setEdicion(String edicion) {
-		Edicion = edicion;
+		this.edicion = edicion;
 	}
-	
 
 	public double getPrecio() {
-		return Precio;
+		return precio;
 	}
-
 
 	public void setPrecio(double precio) {
-		Precio = precio;
+		this.precio = precio;
 	}
-	
-	
-	
-	
-	
+
 }
