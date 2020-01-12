@@ -15,7 +15,7 @@ import Logica.Carta;
 
 public class BD {
 	static Logger log;
-	private static Exception lastError = null; 
+	private static Exception lastError = null;
 
 	/**
 	 * Inicializa una BD SQLITE y devuelve una conexión con ella
@@ -482,7 +482,7 @@ public class BD {
 
 	public static void aniadirProductoAlCarrito(String nick, String ruta, String nombre, String edicion, String rareza,
 			float precio) {
-		
+
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
 		Date d = new Date(System.currentTimeMillis());
@@ -491,24 +491,24 @@ public class BD {
 		String sql = "SELECT referencia FROM Cartas WHERE ruta='" + ruta + "' AND nombre='" + nombre + "' AND rareza='"
 				+ rareza + "' AND edicion='" + edicion + "'";
 		try {
-			
+
 			ResultSet rs = st.executeQuery(sql);
 			int ref = rs.getInt("referencia");
 			rs.close();
 			sql = "SELECT * FROM Carrito WHERE referencia =" + ref;
 			rs = st.executeQuery(sql);
 			if (rs.next()) {
-				unidades  = unidades+1;
-				sql = "UPDATE Carrito SET unidades =" +unidades+ " WHERE referencia = " + ref;
+				unidades = unidades + 1;
+				sql = "UPDATE Carrito SET unidades =" + unidades + " WHERE referencia = " + ref;
 				st.executeUpdate(sql);
 			} else {
-				
+
 				String fecha = d.toString();
 				sql = "INSERT INTO Carrito VALUES('" + nick + "'," + ref + ",'" + fecha + "',1," + precio + ")";
 				st.executeUpdate(sql);
 			}
-			stock = obtenerUnidadesProducto(ref)-1;
-			sql = "UPDATE Cartas SET stock =" +stock+ " WHERE referencia = " + ref;
+			stock = obtenerUnidadesProducto(ref) - 1;
+			sql = "UPDATE Cartas SET stock =" + stock + " WHERE referencia = " + ref;
 			st.executeUpdate(sql);
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
@@ -566,7 +566,7 @@ public class BD {
 	}
 
 	public static void modificarUnidadesEnElCarrito(int referencia, int unidades) {
-		String sql = "UPDATE Cartas SET stock = stock-"+unidades+" WHERE referencia ="+ referencia;
+		String sql = "UPDATE Cartas SET stock = stock-" + unidades + " WHERE referencia =" + referencia;
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
 		try {
@@ -576,7 +576,7 @@ public class BD {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
+
 		}
 		cerrarBD(con, st);
 	}
@@ -587,7 +587,7 @@ public class BD {
 		Statement st = BD.usarBD(con);
 		try {
 			st.executeUpdate(sql);
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
