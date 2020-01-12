@@ -279,26 +279,6 @@ public class BD {
 		cerrarBD(con, st);
 	}
 
-	public static void anyadirStock(String nombre, String edicion, String stock) {	
-		String sql = "UPDATE Cartas SET (Stock = ?) WHERE (Nombre = ?, Edicion = ?)";
-		Connection con = BD.initBD("BaseDeDatos.db");
-		log.log(Level.INFO, " Stock añadido: " + (new Date()));
-		
-		try {
-			PreparedStatement stmt = con.prepareStatement(sql);
-			// las interrogaciones (la primera mete el stmt 1), etc
-			stmt.setString(1, stock);
-			stmt.setString(2, nombre);
-			stmt.setString(3, edicion);
-
-			stmt.executeUpdate();
-	
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
 	public static int buscarCarta(String nombre) {
 		int resultado = 0;
 		String query = "SELECT * FROM Cartas WHERE Nombre='" + nombre + "'";
@@ -371,50 +351,6 @@ public class BD {
 		cerrarBD(con, st);
 		return rutas;
 		}	
-	public static ArrayList<String> obtenerRutasFotos1(Carta c){
-
-		ArrayList<String> rutas = new ArrayList<String>();
-		String sql = "SELECT ruta FROM Cartas WHERE Nombre='"+c.getNombreCarta()+"' AND Edicion='"+c.getEdicion()+"' AND Precio='"+c.getPrecio()+"'";
-		Connection con = BD.initBD("BaseDeDatos.db");
-		Statement st = BD.usarBD(con);
-		try {
-			ResultSet rs = st.executeQuery(sql);
-			while(rs.next()) {
-				String r = rs.getString("ruta");
-				rutas.add(r);
-			}
-			rs.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		cerrarBD(con, st);
-		return rutas;
-		}	
-	public static ArrayList<String> obtenerRutasFotos2(Carta c) { 
-		ArrayList<String> rutas = new ArrayList<String>();
-		String sql = "";
-		if (c.getNombreCarta().equals("") && c.getEdicion().equals("") && c.getRareza().equals("") && c.getPrecio()==0) //cast
-			sql = "SELECT ruta FROM producto WHERE Nombre='" + c.getNombreCarta() + "' AND Edicion='" + c.getEdicion() + "' AND Rareza='"
-					+ c.getEdicion() + "'" + "' AND Precio='" + c.getPrecio();
-		Connection con = BD.initBD("BaseDeDatos.db");
-		Statement st = BD.usarBD(con);
-
-		try {
-			ResultSet rs = st.executeQuery(sql);
-			while (rs.next()) {
-				String r = rs.getString("ruta");
-				rutas.add(r);
-			}
-			rs.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		cerrarBD(con, st);
-		return rutas;
-
-	}
 	
 	public static Carta obtenerDatosCarta(String ruta) {
 		String sql = "SELECT * FROM Cartas WHERE Ruta='"+ruta+"'";
@@ -441,7 +377,6 @@ public class BD {
 		return c;
 		
 	}
-	
 	
 	public static float obtenerPrecioCarta(String ruta) {
 		String sql = "SELECT Precio FROM Cartas WHERE Ruta='" + ruta + "'";
@@ -506,6 +441,28 @@ public class BD {
 		cerrarBD(con, st);
 		return nombre;
 	}
+	
+	public static String obtenerEdicionCarta(String ruta) {
+		String sql = "SELECT Edicion FROM Cartas WHERE Ruta='" + ruta + "'";
+		Connection con = BD.initBD("BaseDeDatos.db");
+		log.log(Level.INFO, " Obtenida la Edicion de la carta desde BD: " + (new Date()));
+		
+		Statement st = BD.usarBD(con);
+		String nombre = "";
+		try {
+			ResultSet rs = st.executeQuery(sql);
+			if (rs.next()) {
+				nombre = rs.getString("Edicion");
+				
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cerrarBD(con, st);
+		return nombre;
+	}
 
 	public static String obtenerRarezaCarta(String ruta) {
 		String sql = "SELECT Rareza FROM Cartas WHERE Ruta='" + ruta + "'";
@@ -528,5 +485,92 @@ public class BD {
 		cerrarBD(con, st);
 		return rareza;
 	}
+	
+	public static void aniadirProductoAlCarrito(String nick, String ruta, String nombre, String edicion, String rareza, float precio) {
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		Date d = new Date(System.currentTimeMillis());
+		String sql = "SELECT referencia FROM Cartas WHERE Ruta='"+ruta+"' AND Nombre='"+nombre+"' AND Rareza='"+ rareza+ "' AND Edicion='"+edicion+"'";
+		try {
+			ResultSet rs = st.executeQuery(sql);
+			int ref = rs.getInt("referencia");
+			rs.close();
+			sql = "SELECT * FROM Carrito WHERE referencia ="+ref;
+			rs = st.executeQuery(sql);
+			if(rs.next()) {
+				sql = "UPDATE Carrito SET unidades = unidades + 1 WHERE referencia = "+ref;
+				st.executeUpdate(sql);
+			}else {
+				String fecha = d.toString();
+				sql = "INSERT INTO Carrito VALUES('"+nick+"',"+ref+",'"+fecha+"',1,"+precio+")";
+				st.executeUpdate(sql);
+			}
+			sql = "UPDATE Cartas SET Stock = Stock - 1 WHERE referencia = "+ref;
+			st.executeUpdate(sql);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		cerrarBD(con, st);
+		
+	}
+	
+	public static ArrayList<Carrito> obtenerDatosCarrito(){
+		String sql = "SELECT * FROM Carrito";
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		ArrayList <Carrito> carrito = new ArrayList<Carrito>();
+		try {
+			ResultSet rs = st.executeQuery(sql);
+			while(rs.next()) {
+				int ref = rs.getInt("referencia");
+				float precio = rs.getFloat("precio");
+				String nick = rs.getString("nick");
+				int unidades = rs.getInt("unidades");
+				String fecha = rs.getString("fecha");
+				carrito.add(new Carrito(ref, nick, unidades, precio, fecha));
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cerrarBD(con, st);
+		return carrito;
+	}
 
+	public static int obtenerUnidadesProducto(int referencia) {
+		String sql = "SELECT Stock FROM Cartas WHERE Referencia="+referencia;
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		int unidades = 0;
+		try {
+			ResultSet rs = st.executeQuery(sql);
+			if(rs.next())
+				unidades = rs.getInt("Stock");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cerrarBD(con, st);
+		return unidades;	
+	}
+	
+	public static void modificarUnidadesEnElCarrito(int referencia, int unidades) {
+		String sql = "UPDATE Cartas SET Stock = Stock-"+unidades;
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		try {
+			st.executeUpdate(sql);
+			cerrarBD(con, st);
+			con = BD.initBD("BaseDeDatos.db");
+			st = BD.usarBD(con);
+			sql = "UPDATE Carrito SET unidades = unidades+"+unidades;
+			st.executeUpdate(sql);
+			cerrarBD(con, st);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

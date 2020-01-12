@@ -82,8 +82,8 @@ public class VentanaCarta extends JFrame {
 		JLabel lblEdicion = new JLabel("Edicion:");
 		panel_3.add(lblEdicion, "cell 0 3,alignx left,aligny top");
 		
-		//String edicionCarta = BD.(ruta);  falta metodo obtener edicion carta
-		JLabel lblEdic = new JLabel("EdiC");
+		String edicionCarta = BD.obtenerEdicionCarta(ruta); 
+		JLabel lblEdic = new JLabel(edicionCarta);
 		panel_3.add(lblEdic, "cell 1 3,alignx center");
 		
 		JLabel label_1 = new JLabel(" ");
