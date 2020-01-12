@@ -507,9 +507,12 @@ public class BD {
 				sql = "INSERT INTO Carrito VALUES('" + nick + "'," + ref + ",'" + fecha + "',1," + precio + ")";
 				st.executeUpdate(sql);
 			}
-			stock = obtenerUnidadesProducto(ref) - 1;
+			
+			/**stock = obtenerUnidadesProducto(ref) - 1;
+			System.out.println(stock);
 			sql = "UPDATE Cartas SET stock =" + stock + " WHERE referencia = " + ref;
-			st.executeUpdate(sql);
+			st.executeUpdate(sql);**/
+			
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -566,7 +569,7 @@ public class BD {
 	}
 
 	public static void modificarUnidadesEnElCarrito(int referencia, int unidades) {
-		String sql = "UPDATE Cartas SET stock = stock-" + unidades + " WHERE referencia =" + referencia;
+		String sql = "UPDATE Cartas SET stock = " + unidades + " WHERE referencia =" + referencia;
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
 		try {

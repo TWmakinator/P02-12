@@ -15,13 +15,13 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import BaseDeDatos.BD;
+import javax.swing.SwingConstants;
 
 public class PanelCarrito extends JPanel {
 	private JTextField txtPrecio;
-	private int unidadesCompradas;
 
 	public PanelCarrito(String ruta, int unidades, float precio, int referencia) {
-		unidadesCompradas = unidades;
+		
 		setLayout(new BorderLayout(0, 0));
 
 		JPanel pArriba = new JPanel();
@@ -56,22 +56,28 @@ public class PanelCarrito extends JPanel {
 		lblUnidades.setBounds(10, 22, 103, 14);
 		pUnidades.add(lblUnidades);
 
+		
+		
+		int unidadesRestantes = BD.obtenerUnidadesProducto(referencia);
 		JSpinner spinnerUnidades = new JSpinner();
 		SpinnerModel sp = spinnerUnidades.getModel();
-		sp.setValue(new Integer(unidades));
+		sp.setValue(new Integer(1));
 		spinnerUnidades.setModel(sp);
-		spinnerUnidades.setBounds(152, 19, 29, 20);
+		spinnerUnidades.setBounds(123, 19, 29, 20);
+		
 		spinnerUnidades.addChangeListener(new ChangeListener() {
 
 			@Override
 			public void stateChanged(ChangeEvent arg0) {
-
-				int valor = ((Integer) spinnerUnidades.getValue()).intValue();
-				int unidadesRestantes = BD.obtenerUnidadesProducto(referencia);
-				if (unidadesRestantes >= valor - unidadesCompradas) {
-					BD.modificarUnidadesEnElCarrito(referencia, valor - unidadesCompradas);
-					unidadesCompradas = valor - unidades;
+				
+				int valor = ((Integer) spinnerUnidades.getValue()).intValue();			
+				if (unidadesRestantes >= valor) {
+					if(valor > 0) {
+					BD.modificarUnidadesEnElCarrito(referencia, unidadesRestantes-valor);	
+					txtPrecio.setText(String.valueOf(precio * valor));
+					}
 				} else {
+					
 					JOptionPane.showMessageDialog(null, "No hay unidades suficientes");
 				}
 			}
@@ -79,13 +85,14 @@ public class PanelCarrito extends JPanel {
 		pUnidades.add(spinnerUnidades);
 
 		JLabel lblPrecio = new JLabel("Precio total");
-		lblPrecio.setBounds(10, 78, 46, 14);
+		lblPrecio.setBounds(10, 78, 75, 14);
 		pUnidades.add(lblPrecio);
 
 		txtPrecio = new JTextField();
+		txtPrecio.setHorizontalAlignment(SwingConstants.CENTER);
 		txtPrecio.setEditable(false);
 		txtPrecio.setBounds(95, 75, 86, 20);
-		txtPrecio.setText(String.valueOf(precio * unidades)+"€");
+		
 		pUnidades.add(txtPrecio);
 		txtPrecio.setColumns(10);
 

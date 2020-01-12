@@ -53,7 +53,6 @@ public class Carrito {
 	}
 
 	public Carrito(int referencia, String nick, int unidades, float precio, String fecha) {
-		super();
 		this.referencia = referencia;
 		this.nick = nick;
 		this.unidades = unidades;
