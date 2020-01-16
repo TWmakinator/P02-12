@@ -80,8 +80,7 @@ public class VentanaRegistro extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// Anyade el user a la bd
 
-				if (txtNombre.getText().equals("") || txtEmail.getText().equals("")
-						|| txtContrasenya.getText().equals("")) {
+				if (txtNombre.getText().equals("") || txtEmail.getText().equals("")|| txtContrasenya.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Hay que rellenar todos los campos", "ERROR",
 							JOptionPane.ERROR_MESSAGE);
 				} else {

@@ -194,7 +194,7 @@ public class BD {
 		log.log(Level.INFO, " Nuevo usuario registrado en BD: " + (new Date()));
 
 		Statement st = BD.usarBD(con);
-		String sql = "INSERT INTO usuario VALUES('" + nick + "','" + email + "','" + contrasenya + "')";
+		String sql = "INSERT INTO usuario VALUES('" + nick + "','" + contrasenya + "','" + email + "')";
 		try {
 			st.executeUpdate(sql);
 
