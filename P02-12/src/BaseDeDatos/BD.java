@@ -189,12 +189,12 @@ public class BD {
 
 	}
 
-	public static void registrarUsuario(String nick, String contrasenya, String email) {
+	public static void registrarUsuario(String nick, String email, String contrasenya) {
 		Connection con = BD.initBD("BaseDeDatos.db");
 		log.log(Level.INFO, " Nuevo usuario registrado en BD: " + (new Date()));
 
 		Statement st = BD.usarBD(con);
-		String sql = "INSERT INTO usuario VALUES('" + nick + "','" + contrasenya + "','" + email + "')";
+		String sql = "INSERT INTO usuario VALUES('" + nick + "','" + email + "','" + contrasenya + "')";
 		try {
 			st.executeUpdate(sql);
 
