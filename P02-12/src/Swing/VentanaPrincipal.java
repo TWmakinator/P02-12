@@ -180,7 +180,6 @@ public class VentanaPrincipal extends JFrame {
 				ventana.setVisible(false);
 				VentanaLogin vl = new VentanaLogin();
 				vl.setVisible(true);
-				log.log(Level.INFO, "Cerrando la sesion actual" + (new Date()));
 			}
 		});
 		panelSur.add(btnCerrarSesion);

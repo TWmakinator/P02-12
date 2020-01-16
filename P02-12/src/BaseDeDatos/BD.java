@@ -17,13 +17,6 @@ public class BD {
 	static Logger log;
 	private static Exception lastError = null;
 
-	/**
-	 * Inicializa una BD SQLITE y devuelve una conexión con ella
-	 * 
-	 * @param nombreBD Nombre de fichero de la base de datos
-	 * @return Conexión con la base de datos indicada. Si hay algún error, se
-	 *         devuelve null
-	 */
 	public static Connection initBD(String nombreBD) {
 		log = Logger.getLogger("LOG");
 		try {
@@ -37,13 +30,6 @@ public class BD {
 		}
 	}
 
-	/**
-	 * Devuelve statement para usar la base de datos
-	 * 
-	 * @param con Conexión ya creada y abierta a la base de datos
-	 * @return sentencia de trabajo si se crea correctamente, null si hay cualquier
-	 *         error
-	 */
 	public static Statement usarBD(Connection con) {
 		try {
 			Statement statement = con.createStatement();
@@ -56,13 +42,6 @@ public class BD {
 		}
 	}
 
-	/**
-	 * Crea las tablas de la base de datos. Si ya existen, las deja tal cual
-	 * 
-	 * @param con Conexión ya creada y abierta a la base de datos
-	 * @return sentencia de trabajo si se crea correctamente, null si hay cualquier
-	 *         error
-	 */
 	public static Statement usarCrearTablasBD(Connection con) {
 		try {
 			Statement statement = con.createStatement();
@@ -79,14 +58,6 @@ public class BD {
 		}
 	}
 
-	/**
-	 * Reinicia en blanco las tablas de la base de datos. UTILIZAR ESTE MËTODO CON
-	 * PRECAUCIÓN. Borra todos los datos que hubiera ya en las tablas
-	 * 
-	 * @param con Conexión ya creada y abierta a la base de datos
-	 * @return sentencia de trabajo si se borra correctamente, null si hay cualquier
-	 *         error
-	 */
 	public static Statement reiniciarBD(Connection con) {
 		try {
 			Statement statement = con.createStatement();
@@ -100,12 +71,6 @@ public class BD {
 		}
 	}
 
-	/**
-	 * Cierra la base de datos abierta y cierra el hilo de proceso de base de datos
-	 * 
-	 * @param con Conexión abierta de la BD
-	 * @param st  Sentencia abierta de la BD
-	 */
 	public static void cerrarBD(final Connection con, final Statement st) {
 		try {
 			if (st != null)
@@ -119,25 +84,9 @@ public class BD {
 		}
 	}
 
-	/**
-	 * Devuelve la información de excepción del último error producido por
-	 * cualquiera de los métodos de gestión de base de datos
-	 */
 	public static Exception getLastError() {
 		return lastError;
 	}
-
-	/* MÉTODOS DEL PROYECTO */
-
-	/**
-	 * Devuelve información sobre la existencia del usuario en la bd
-	 * 
-	 * @param nick
-	 * @param contraseña
-	 * @return 0: Si el nick es incorrecto 1: Si el nick es correcto pero la
-	 *         contraseña no 2: Si el nick y la contraseña son correctos
-	 * 
-	 */
 
 	public static int buscarUsuario(String nick, String contrasenya) {
 		int resultado = 0;

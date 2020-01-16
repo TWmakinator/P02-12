@@ -215,8 +215,8 @@ public class VentanaAnyadirCarta extends JFrame {
 				// Anyade la carta a la bd
 
 				if (txtNombre.getText().equals("") || txtEdicion.getText().equals("") || txtRareza.getText().equals("")
-						|| txtPrecio.getText().equals("") || txtReferencia.getText().equals("")
-						|| txtRuta.getText().equals("") || txtStock.getText().equals("")) {
+						|| txtPrecio.getText().equals("") ||  txtRuta.getText().equals("") ||txtReferencia.getText().equals("")
+						|| txtStock.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Hay que rellenar todos los campos", "ERROR",
 							JOptionPane.ERROR_MESSAGE);
 
@@ -230,7 +230,7 @@ public class VentanaAnyadirCarta extends JFrame {
 
 						} else {
 							BD.registrarCarta(txtNombre.getText(), txtEdicion.getText(), txtRareza.getText(),
-									txtPrecio.getText(), txtReferencia.getText(), txtRuta.getText(),
+									txtPrecio.getText(), txtRuta.getText(), txtReferencia.getText(),
 									txtStock.getText());
 							JOptionPane.showMessageDialog(null, "Carta Anyadida a la BD", "Exito",
 									JOptionPane.INFORMATION_MESSAGE);
