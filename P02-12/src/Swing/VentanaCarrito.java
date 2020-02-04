@@ -20,6 +20,7 @@ import java.awt.event.ActionEvent;
 public class VentanaCarrito extends JFrame {
 
 	private JPanel contentPane;
+	private JPanel pCentral = new JPanel();
 	public String usuario;
 
 	/**
@@ -41,6 +42,20 @@ public class VentanaCarrito extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+
+	public void mostrarCarrito(ArrayList<Carrito> car, int n) {
+		
+		if (n < car.size()) {
+			Carrito c = car.get(n);
+			String ruta = BD.obtenerRutaFoto(c.getReferencia());
+			PanelCarrito pc = new PanelCarrito(ruta, c.getUnidades(), c.getPrecio(), c.getReferencia());
+			pCentral.add(pc);
+			mostrarCarrito(car, n + 1);
+
+		}
+
+	}
+
 	public VentanaCarrito(String usuario) {
 		this.usuario = usuario;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -77,17 +92,23 @@ public class VentanaCarrito extends JFrame {
 
 		pAbajo.add(btnComprar);
 
-		JPanel pCentral = new JPanel();
 		pCentral.setLayout(new GridLayout(0, 1, 0, 0));
-		ArrayList<Carrito> carrito = new ArrayList<Carrito>();
-		carrito = BD.obtenerDatosCarrito();
 
-		for (Carrito c : carrito) {
-			String ruta = BD.obtenerRutaFoto(c.getReferencia());
-			PanelCarrito pc = new PanelCarrito(ruta, c.getUnidades(), c.getPrecio(), c.getReferencia());
-			pCentral.add(pc);
+		ArrayList<Carrito> car = new ArrayList<Carrito>();
+		car = BD.obtenerDatosCarrito();
+		mostrarCarrito(car, 0);
 
-		}
+		/**
+		 * ArrayList<Carrito> carrito = new ArrayList<Carrito>(); carrito =
+		 * BD.obtenerDatosCarrito();
+		 * 
+		 * for (Carrito c : carrito) { String ruta =
+		 * BD.obtenerRutaFoto(c.getReferencia()); PanelCarrito pc = new
+		 * PanelCarrito(ruta, c.getUnidades(), c.getPrecio(), c.getReferencia());
+		 * pCentral.add(pc);
+		 * 
+		 * }
+		 */
 		JScrollPane scroll = new JScrollPane(pCentral);
 		contentPane.add(scroll, BorderLayout.CENTER);
 		setVisible(true);

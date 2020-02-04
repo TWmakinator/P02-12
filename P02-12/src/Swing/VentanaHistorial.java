@@ -30,12 +30,13 @@ public class VentanaHistorial extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaHistorial() {
-
-		setBackground(Color.WHITE);
+		setForeground(Color.LIGHT_GRAY);
 		setResizable(false);
 
+		setBackground(Color.WHITE);
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 350, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -65,7 +66,7 @@ public class VentanaHistorial extends JFrame {
 
 		JLabel lblNewLabel = new JLabel("Ultima Compra");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Monospaced", Font.PLAIN, 21));
+		lblNewLabel.setFont(new Font("Calibri", Font.PLAIN, 21));
 		panelNorte.add(lblNewLabel);
 
 		JPanel panelSur = new JPanel();
@@ -83,7 +84,7 @@ public class VentanaHistorial extends JFrame {
 			}
 		});
 		panelSur.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		btnVolver.setFont(new Font("Monospaced", Font.PLAIN, 16));
+		btnVolver.setFont(new Font("Arial", Font.PLAIN, 11));
 		panelSur.add(btnVolver);
 
 	}

@@ -321,8 +321,8 @@ public class BD {
 
 	}
 
-	public static float obtenerPrecioCarta(String ruta) {
-		String sql = "SELECT precio FROM Cartas WHERE ruta='" + ruta + "'";
+	public static float obtenerPrecioCarta(String i) {
+		String sql = "SELECT precio FROM Cartas WHERE ruta='" + i + "'";
 		Connection con = BD.initBD("BaseDeDatos.db");
 		log.log(Level.INFO, " Precio de carta obtenido: " + (new Date()));
 
