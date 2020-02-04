@@ -20,6 +20,7 @@ import java.awt.event.ActionEvent;
 public class VentanaCarrito extends JFrame {
 
 	private JPanel contentPane;
+	public String usuario;
 
 	/**
 	 * Launch the application.
@@ -28,7 +29,7 @@ public class VentanaCarrito extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaCarrito frame = new VentanaCarrito();
+					VentanaCarrito frame = new VentanaCarrito("");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +41,8 @@ public class VentanaCarrito extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanaCarrito() {
+	public VentanaCarrito(String usuario) {
+		this.usuario = usuario;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 400);
 		contentPane = new JPanel();
@@ -68,7 +70,7 @@ public class VentanaCarrito extends JFrame {
 		btnComprar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ventana.setVisible(false);
-				VentanComprar vc = new VentanComprar();
+				VentanComprar vc = new VentanComprar(usuario);
 				vc.setVisible(true);
 			}
 		});

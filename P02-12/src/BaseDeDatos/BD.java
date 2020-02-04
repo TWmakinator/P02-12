@@ -453,14 +453,9 @@ public class BD {
 			} else {
 
 				String fecha = d.toString();
-				sql = "INSERT INTO Carrito VALUES('" + nick + "'," + ref + ",'" + fecha + "',1," + precio + ")";
+				sql = "INSERT INTO Carrito VALUES('" + nick + "','" + ref + "','" + nombre + "','" +fecha + "',1,'" + precio + "')";
 				st.executeUpdate(sql);
 			}
-			
-			/**stock = obtenerUnidadesProducto(ref) - 1;
-			System.out.println(stock);
-			sql = "UPDATE Cartas SET stock =" + stock + " WHERE referencia = " + ref;
-			st.executeUpdate(sql);**/
 			
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
@@ -480,12 +475,13 @@ public class BD {
 
 			ResultSet rs = st.executeQuery(sql);
 			while (rs.next()) {
+				String carta = rs.getString("carta");
 				int ref = rs.getInt("referencia");
 				float precio = rs.getFloat("precio");
 				String nick = rs.getString("nick");
 				int unidades = rs.getInt("unidades");
 				String fecha = rs.getString("fecha");
-				carrito.add(new Carrito(ref, nick, unidades, precio, fecha));
+				carrito.add(new Carrito(ref, nick, carta, unidades, precio, fecha));
 
 			}
 
@@ -546,4 +542,5 @@ public class BD {
 		}
 		cerrarBD(con, st);
 	}
+		
 }

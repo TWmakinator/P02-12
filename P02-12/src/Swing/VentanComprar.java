@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 import BaseDeDatos.BD;
 import Logica.Carrito;
+import Logica.GestionFicheros;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
 
 public class VentanComprar extends JFrame {
 
@@ -27,15 +29,15 @@ public class VentanComprar extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-
+	public String usuario;
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {
-					VentanComprar frame = new VentanComprar();
+				try {				
+					VentanComprar frame = new VentanComprar(" ");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +49,9 @@ public class VentanComprar extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VentanComprar() {
+	public VentanComprar(String usuario) {
+		
+		this.usuario = usuario;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 200);
 		contentPane = new JPanel();
@@ -143,7 +147,7 @@ public class VentanComprar extends JFrame {
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ventana.setVisible(false);
-				VentanaCarrito vc = new VentanaCarrito();
+				VentanaCarrito vc = new VentanaCarrito(usuario);
 				vc.setVisible(true);
 			}
 		});
@@ -160,6 +164,9 @@ public class VentanComprar extends JFrame {
 				} else {
 					JOptionPane.showMessageDialog(null, "Compra Realizada Correctamente", "Comprado",
 							JOptionPane.INFORMATION_MESSAGE);
+					
+					GestionFicheros.Historial(BD.obtenerDatosCarrito(), usuario);
+					
 					BD.LimpiarCarrito();
 					ventana.setVisible(false);
 				}

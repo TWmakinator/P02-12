@@ -89,6 +89,7 @@ public class PanelCarrito extends JPanel {
 		pUnidades.add(lblPrecio);
 
 		txtPrecio = new JTextField();
+		txtPrecio.setText(String.valueOf(precio));
 		txtPrecio.setHorizontalAlignment(SwingConstants.CENTER);
 		txtPrecio.setEditable(false);
 		txtPrecio.setBounds(95, 75, 86, 20);

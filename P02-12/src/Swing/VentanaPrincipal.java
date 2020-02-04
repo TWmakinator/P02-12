@@ -115,7 +115,7 @@ public class VentanaPrincipal extends JFrame {
 		btnCarrito.setBackground(Color.WHITE);
 		btnCarrito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new VentanaCarrito();
+				new VentanaCarrito(VentanaLogin.getNick());
 			}
 		});
 
