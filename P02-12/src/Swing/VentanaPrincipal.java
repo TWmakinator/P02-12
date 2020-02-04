@@ -41,28 +41,6 @@ public class VentanaPrincipal extends JFrame {
 	private InterfaceReloj ireloj;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			log = Logger.getLogger("LoggerEjecucion");
-		} catch (Exception e) {
-		}
-		log.log(Level.INFO, " Inicio de la ventana principal" + (new Date()));
-
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaPrincipal frame = new VentanaPrincipal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public VentanaPrincipal() {

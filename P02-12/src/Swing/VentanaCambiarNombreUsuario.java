@@ -26,22 +26,6 @@ public class VentanaCambiarNombreUsuario extends JFrame {
 	private JTextField txtNuevoNombre;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaCambiarNombreUsuario frame = new VentanaCambiarNombreUsuario();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public VentanaCambiarNombreUsuario() {

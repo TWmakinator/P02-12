@@ -30,27 +30,12 @@ public class VentanComprar extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	public String usuario;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {				
-					VentanComprar frame = new VentanComprar(" ");
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
 	public VentanComprar(String usuario) {
-		
+
 		this.usuario = usuario;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 200);
@@ -164,9 +149,9 @@ public class VentanComprar extends JFrame {
 				} else {
 					JOptionPane.showMessageDialog(null, "Compra Realizada Correctamente", "Comprado",
 							JOptionPane.INFORMATION_MESSAGE);
-					
+
 					GestionFicheros.Historial(BD.obtenerDatosCarrito(), usuario);
-					
+
 					BD.LimpiarCarrito();
 					ventana.setVisible(false);
 				}

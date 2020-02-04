@@ -26,14 +26,10 @@ public class GestionFicheros {
 
 			else {
 
-				pw = new PrintWriter(new FileWriter(f, false));
-
-				pw.println("\n");
-
+				pw = new PrintWriter(new FileWriter(f, true));
 				while (i < historial.size()) {
 					Carrito c = new Carrito();
 					c = historial.get(i);
-
 					pw.println("Usuario: " + "" + usuario + "     " + "Carta : " + c.getCarta());
 					i++;
 

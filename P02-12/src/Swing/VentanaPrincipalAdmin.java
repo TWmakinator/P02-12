@@ -30,23 +30,6 @@ public class VentanaPrincipalAdmin extends JFrame {
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaPrincipalAdmin frame = new VentanaPrincipalAdmin();
-					frame.setVisible(true);
-
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public VentanaPrincipalAdmin() {
@@ -98,77 +81,77 @@ public class VentanaPrincipalAdmin extends JFrame {
 		gbl_panel_2.columnWeights = new double[] { 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		gbl_panel_2.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
 		panel_2.setLayout(gbl_panel_2);
-		
-				JButton btnNewButton_1 = new JButton("Anyadir Carta BD");
-				btnNewButton_1.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						VentanaAnyadirCarta vn = new VentanaAnyadirCarta();
-						vn.setVisible(true);
-						ventana.setVisible(false);
 
-					}
-				});
-				GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
-				gbc_btnNewButton_1.anchor = GridBagConstraints.NORTH;
-				gbc_btnNewButton_1.fill = GridBagConstraints.HORIZONTAL;
-				gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
-				gbc_btnNewButton_1.gridx = 1;
-				gbc_btnNewButton_1.gridy = 1;
-				panel_2.add(btnNewButton_1, gbc_btnNewButton_1);
-		
-				JButton btnNewButton_2 = new JButton("Eliminar Carta BD");
-				btnNewButton_2.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						VentanaEliminarCarta vn = new VentanaEliminarCarta();
-						vn.setVisible(true);
-						ventana.setVisible(false);
+		JButton btnNewButton_1 = new JButton("Anyadir Carta BD");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaAnyadirCarta vn = new VentanaAnyadirCarta();
+				vn.setVisible(true);
+				ventana.setVisible(false);
 
-					}
-				});
-				GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
-				gbc_btnNewButton_2.anchor = GridBagConstraints.NORTH;
-				gbc_btnNewButton_2.fill = GridBagConstraints.HORIZONTAL;
-				gbc_btnNewButton_2.insets = new Insets(0, 0, 5, 5);
-				gbc_btnNewButton_2.gridx = 1;
-				gbc_btnNewButton_2.gridy = 2;
-				panel_2.add(btnNewButton_2, gbc_btnNewButton_2);
-		
-				JButton btnNewButton = new JButton("Cambiar Nombre Usuario");
-				btnNewButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						VentanaCambiarNombreUsuario vn = new VentanaCambiarNombreUsuario();
-						vn.setVisible(true);
-						ventana.setVisible(false);
+			}
+		});
+		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
+		gbc_btnNewButton_1.anchor = GridBagConstraints.NORTH;
+		gbc_btnNewButton_1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton_1.gridx = 1;
+		gbc_btnNewButton_1.gridy = 1;
+		panel_2.add(btnNewButton_1, gbc_btnNewButton_1);
 
-					}
-				});
-				GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-				gbc_btnNewButton.anchor = GridBagConstraints.NORTHWEST;
-				gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
-				gbc_btnNewButton.gridx = 1;
-				gbc_btnNewButton.gridy = 3;
-				panel_2.add(btnNewButton, gbc_btnNewButton);
-		
-				JButton btnNewButton_3 = new JButton("Cambiar Clave Usuario");
-				btnNewButton_3.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						VentanaCambiarContrasenya vc = new VentanaCambiarContrasenya();
-						vc.setVisible(true);
-						ventana.setVisible(false);
-					}
-				});
-				GridBagConstraints gbc_btnNewButton_3 = new GridBagConstraints();
-				gbc_btnNewButton_3.fill = GridBagConstraints.HORIZONTAL;
-				gbc_btnNewButton_3.insets = new Insets(0, 0, 5, 5);
-				gbc_btnNewButton_3.anchor = GridBagConstraints.NORTH;
-				gbc_btnNewButton_3.gridx = 1;
-				gbc_btnNewButton_3.gridy = 4;
-				panel_2.add(btnNewButton_3, gbc_btnNewButton_3);
-		
+		JButton btnNewButton_2 = new JButton("Eliminar Carta BD");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaEliminarCarta vn = new VentanaEliminarCarta();
+				vn.setVisible(true);
+				ventana.setVisible(false);
+
+			}
+		});
+		GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
+		gbc_btnNewButton_2.anchor = GridBagConstraints.NORTH;
+		gbc_btnNewButton_2.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnNewButton_2.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton_2.gridx = 1;
+		gbc_btnNewButton_2.gridy = 2;
+		panel_2.add(btnNewButton_2, gbc_btnNewButton_2);
+
+		JButton btnNewButton = new JButton("Cambiar Nombre Usuario");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaCambiarNombreUsuario vn = new VentanaCambiarNombreUsuario();
+				vn.setVisible(true);
+				ventana.setVisible(false);
+
+			}
+		});
+		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		gbc_btnNewButton.anchor = GridBagConstraints.NORTHWEST;
+		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton.gridx = 1;
+		gbc_btnNewButton.gridy = 3;
+		panel_2.add(btnNewButton, gbc_btnNewButton);
+
+		JButton btnNewButton_3 = new JButton("Cambiar Clave Usuario");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaCambiarContrasenya vc = new VentanaCambiarContrasenya();
+				vc.setVisible(true);
+				ventana.setVisible(false);
+			}
+		});
+		GridBagConstraints gbc_btnNewButton_3 = new GridBagConstraints();
+		gbc_btnNewButton_3.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnNewButton_3.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton_3.anchor = GridBagConstraints.NORTH;
+		gbc_btnNewButton_3.gridx = 1;
+		gbc_btnNewButton_3.gridy = 4;
+		panel_2.add(btnNewButton_3, gbc_btnNewButton_3);
+
 		JButton btnHistorial = new JButton("Historial compras");
 		btnHistorial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+
 				ventana.setVisible(false);
 				VentanaHistorial vh = new VentanaHistorial();
 				vh.setVisible(true);

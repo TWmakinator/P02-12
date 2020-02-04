@@ -29,22 +29,6 @@ public class VentanaRegistro extends JFrame {
 	private JPasswordField txtContrasenya;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaRegistro frame = new VentanaRegistro();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public VentanaRegistro() {
@@ -80,7 +64,8 @@ public class VentanaRegistro extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// Anyade el user a la bd
 
-				if (txtNombre.getText().equals("") || txtEmail.getText().equals("")|| txtContrasenya.getText().equals("")) {
+				if (txtNombre.getText().equals("") || txtEmail.getText().equals("")
+						|| txtContrasenya.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Hay que rellenar todos los campos", "ERROR",
 							JOptionPane.ERROR_MESSAGE);
 				} else {

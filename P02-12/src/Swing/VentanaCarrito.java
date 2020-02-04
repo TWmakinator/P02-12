@@ -24,27 +24,11 @@ public class VentanaCarrito extends JFrame {
 	public String usuario;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaCarrito frame = new VentanaCarrito("");
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 
 	public void mostrarCarrito(ArrayList<Carrito> car, int n) {
-		
+
 		if (n < car.size()) {
 			Carrito c = car.get(n);
 			String ruta = BD.obtenerRutaFoto(c.getReferencia());
