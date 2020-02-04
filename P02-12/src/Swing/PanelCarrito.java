@@ -19,6 +19,7 @@ import javax.swing.SwingConstants;
 
 public class PanelCarrito extends JPanel {
 	private JTextField txtPrecio;
+	public static int contador;
 
 	public PanelCarrito(String ruta, int unidades, float precio, int referencia) {
 		
@@ -52,7 +53,7 @@ public class PanelCarrito extends JPanel {
 		pDatosProducto.add(pUnidades);
 		pUnidades.setLayout(null);
 
-		JLabel lblUnidades = new JLabel("Unidades");
+		JLabel lblUnidades = new JLabel("Unidades:");
 		lblUnidades.setBounds(10, 22, 103, 14);
 		pUnidades.add(lblUnidades);
 
@@ -69,7 +70,7 @@ public class PanelCarrito extends JPanel {
 
 			@Override
 			public void stateChanged(ChangeEvent arg0) {
-				
+				contador++;
 				int valor = ((Integer) spinnerUnidades.getValue()).intValue();			
 				if (unidadesRestantes >= valor) {
 					if(valor > 0) {
@@ -84,7 +85,7 @@ public class PanelCarrito extends JPanel {
 		});
 		pUnidades.add(spinnerUnidades);
 
-		JLabel lblPrecio = new JLabel("Precio total");
+		JLabel lblPrecio = new JLabel("Precio total:");
 		lblPrecio.setBounds(10, 78, 75, 14);
 		pUnidades.add(lblPrecio);
 
@@ -92,10 +93,14 @@ public class PanelCarrito extends JPanel {
 		txtPrecio.setText(String.valueOf(precio));
 		txtPrecio.setHorizontalAlignment(SwingConstants.CENTER);
 		txtPrecio.setEditable(false);
-		txtPrecio.setBounds(95, 75, 86, 20);
+		txtPrecio.setBounds(95, 75, 54, 20);
 		
 		pUnidades.add(txtPrecio);
 		txtPrecio.setColumns(10);
+		
+		JLabel label = new JLabel("\u20AC");
+		label.setBounds(154, 78, 46, 14);
+		pUnidades.add(label);
 
 	}
 }

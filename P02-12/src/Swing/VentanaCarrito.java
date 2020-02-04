@@ -82,17 +82,6 @@ public class VentanaCarrito extends JFrame {
 		car = BD.obtenerDatosCarrito();
 		mostrarCarrito(car, 0);
 
-		/**
-		 * ArrayList<Carrito> carrito = new ArrayList<Carrito>(); carrito =
-		 * BD.obtenerDatosCarrito();
-		 * 
-		 * for (Carrito c : carrito) { String ruta =
-		 * BD.obtenerRutaFoto(c.getReferencia()); PanelCarrito pc = new
-		 * PanelCarrito(ruta, c.getUnidades(), c.getPrecio(), c.getReferencia());
-		 * pCentral.add(pc);
-		 * 
-		 * }
-		 */
 		JScrollPane scroll = new JScrollPane(pCentral);
 		contentPane.add(scroll, BorderLayout.CENTER);
 		setVisible(true);

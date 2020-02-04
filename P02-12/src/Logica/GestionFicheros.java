@@ -30,7 +30,9 @@ public class GestionFicheros {
 				while (i < historial.size()) {
 					Carrito c = new Carrito();
 					c = historial.get(i);
-					pw.println("Usuario: " + "" + usuario + "     " + "Carta : " + c.getCarta());
+					double total = c.getUnidades()*c.getPrecio(); // me coge una por defecto y el precio lo mismo
+					pw.println("Usuario: " + "" + usuario + "	" + "Carta: " + c.getCarta() + "	"
+							+ " Unidades: " + c.getUnidades() + "	" + "Precio total: " + total+ "€");
 					i++;
 
 				}
